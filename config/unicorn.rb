@@ -16,15 +16,9 @@ ROOT = File.dirname(File.dirname(__FILE__))
 stdout_path "#{ROOT}/log/unicorn-stdout.log"
 stderr_path "#{ROOT}/log/unicorn-stderr.log"
 
-before_fork do |server, worker|
-    defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
-    old_pid = "#{ server.config[:pid] }.oldbin"
-    unless old_pid == server.pid
-      begin
-        Proccess.kill :QUIT, File.read(old_pid).to_i
-      rescue Errno::ENOENT, Errno::ESERCH
-      end
-    end
+root = "/var/www/myapp/current"
+before_exec do |server|
+    ENV['BUNDLE_GEMFILE'] = "#{root}/Gemfile"
 end
 
 after_fork do |server, worker|

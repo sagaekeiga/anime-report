@@ -2,8 +2,33 @@
 lock "3.7.2"
 
 set :application, "anime-report"
-set :repo_url, 'git@github.com:sagaekeiga/anime-report.git'
+set :repo_url, 'https://github.com/sagaekeiga/anime-report.git'
 set :deploy_to, '/home/anime/deploy/'
+
+set :keep_releases, 5
+set :ssh_options, :port => "61203"
+
+set :rbenv_type, :system # :system or :user
+set :rbenv_ruby, '2.3.1'
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+set :rbenv_roles, :all # default value
+
+set :linked_dirs, %w{bin log tmp/backup tmp/pids tmp/cache tmp/sockets vendor/bundle}
+set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
+
+set :bundle_jobs, 4
+
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+
+after 'deploy:publishing', 'deploy:restart'
+namespace :deploy do
+  task :restart do
+    invoke 'unicorn:restart'
+  end
+end
+
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 

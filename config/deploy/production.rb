@@ -6,14 +6,24 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
+set :branch, 'master'
 
-role :app, %w{sakura}
-role :web, %w{sakura}
-role :db, %w{sakura}
+role :app, %w{anime@160.16.198.30}
+role :web, %w{anime@160.16.198.30}
+role :db,  %w{anime@160.16.198.30}
 
-server 'sakura',
- user: 'your_name',
- roles: %w{web app db}
+server '160.16.198.30', user: 'anime', roles: %w{web app db}
+
+set :ssh_options, {
+    forward_agent: true,
+    auth_methods: %w(publickey),
+    port: 61203
+}
+
+root = "/var/www/myapp/current"
+before_exec do |server|
+ENV['BUNDLE_GEMFILE'] = "#{root}/Gemfile"
+end 
 
 # role-based syntax
 # ==================
