@@ -1,5 +1,6 @@
-listen "/tmp/unicorn.sock"
-pid "tmp/pids/unicron.pid"
+listen '/home/anime/anime-report/tmp/unicorn.sock'
+pid    '/home/anime/anime-report/tmp/unicorn.pid'
+
 worker_processes 2
 timeout 15
 preload_app true

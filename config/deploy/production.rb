@@ -20,10 +20,6 @@ set :ssh_options, {
     port: 61203
 }
 
-root = "/var/www/myapp/current"
-before_exec do |server|
-ENV['BUNDLE_GEMFILE'] = "#{root}/Gemfile"
-end 
 
 # role-based syntax
 # ==================
