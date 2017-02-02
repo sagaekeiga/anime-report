@@ -1,4 +1,4 @@
-listen "160.16.198.30:61203"
+listen "/tmp/unicorn.sock"
 pid "tmp/pids/unicron.pid"
 worker_processes 2
 timeout 15
