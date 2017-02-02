@@ -1,4 +1,4 @@
-APP_PATH = "/home/anime/app/anime-report"
+APP_PATH = "/home/anime/app/anime-report/current"
 
 worker_processes 4
 working_directory APP_PATH
