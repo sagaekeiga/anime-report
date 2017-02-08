@@ -1,0 +1,30 @@
+<div class="footer-top">
+<div class="footer-home">
+    <%= link_to root_path do %>
+      <%= image_tag('house.png', { :border => '0', :alt => 'ホーム'}) %>
+      ホーム
+    <% end %>
+</div>
+</div>
+
+<div class="footer-bottom">
+    <div class="footer-information">
+        <div class="footer-information-top">
+            <label class="" data-toggle="modal" data-target="#modal-about">
+            <%= link_to "本サイトについて　　　", "#" %>
+            </label>
+            <label class="" data-toggle="modal" data-target="#modal-contract">
+            <%= link_to "利用規約　　　", "#" %>
+            </label>
+            <label class="" data-toggle="modal" data-target="#modal-privacy">
+            <%= link_to "プライバシーポリシー　　　", "#" %>
+            </label>
+            <label>
+            <%= link_to "フィードバックの送信　　　", contacts_path %>
+            </label>
+        </div>
+    </div>
+</div>
+
+
+<%= render 'layouts/footer_modal'%>

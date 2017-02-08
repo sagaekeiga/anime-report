@@ -11,6 +11,11 @@ gem 'sass-rails'
 gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails'
+gem 'bootstrap-sass'
+gem 'therubyracer'
+gem 'twitter-bootstrap-rails'
+gem 'less-rails'
+gem 'devise'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
