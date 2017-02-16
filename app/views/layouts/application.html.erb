@@ -2,12 +2,12 @@
 <html>
 <head>
   <title>アメニティ</title>
+  <meta name="viewport" content="width=devise-width, initial-scale=1.0">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
   <% if user_signed_in? %>
     Logged in as <strong><%= current_user.email %></strong>.
     <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |

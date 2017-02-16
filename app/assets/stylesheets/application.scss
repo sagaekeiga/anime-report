@@ -1,52 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/* footer */
+/* Internet Exploer*/
 
-#footer {
-  float: right;
-  box-shadow: 2px 0 0 0 #ddd;
-  z-index: 1px;
-  background-color: white;
-  height: 150px;
-  width: 100%;
-  list-style: none;
-  text-align: center;
-  right: 0px;
-  bottom: 0px;
-}
-
-.footer-top {
-  width: 1000px;
-  height: 60px;
-  border-bottom: solid 1px;
-  margin: auto;
-  position: relative;
-}
-
-.footer-home {
-  position: relative;
-  left: -465px;
-  top: 20px;
-}
-
-.footer-bottom {
-  width: 1000px;
-  height: 80px;
-  margin: auto;
-  position: relative;
-}
-
-.footer-information {
-  padding: 10px;
-}
-
-.footer-information-top {
-  
-}
-
-.footer-information-bottom {
-  font-size: 5px;
-  margin-left: -260px;
-  padding: 10px;
-}
+@-ms-viewport {width: devise-width;}

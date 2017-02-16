@@ -16,6 +16,7 @@ gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 gem 'devise'
+gem 'jpmobile'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
