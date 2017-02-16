@@ -1,0 +1,86 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+// Place all the styles related to the Animes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+//show
+
+.sh-content {
+ width: 1000px;
+ background-color: red;
+ margin: auto;
+ min-height: 1500px;
+ height: auto !important;
+ height: 50px;
+}
+.sh-if {
+  width: 560px;
+  height: 500px;
+  background-color: blue;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.sh-if-self {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.sh-des {
+  width: 560px;
+  height: 150px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 320px;
+  margin: auto;  
+  background-color: white;
+}
+
+.sh-ani-tt {
+ text-align: center;
+ width: 560px;
+ word-break: break-word;
+ padding: 5px;
+}
+
+.sh-ani-co {
+ text-align: center;
+ width: 560px;
+ word-break: break-word;
+ padding: 5px;
+}
+
+
+
+.sh-index {
+  width: 560px;
+  background-color: yellow;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 600px;
+  margin: auto;
+  min-height: 100px;
+  height: auto !important;
+  height: 50px;
+}
+
+.sh-comments {
+  width: 560px;
+  background-color: blue;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 720px;
+  margin: auto;
+  height: 500px;
+  overflow: auto;
+  word-break: break-word;
+}
