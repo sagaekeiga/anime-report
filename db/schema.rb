@@ -15,6 +15,16 @@ ActiveRecord::Schema.define(version: 20170216122230) do
   create_table "animes", force: :cascade do |t|
     t.text     "title"
     t.text     "content"
+    t.text     "youtube"
+    t.text     "fc2"
+    t.text     "ani"
+    t.text     "hima"
+    t.text     "gogo"
+    t.text     "nova"
+    t.text     "gooda"
+    t.text     "kiss"
+    t.text     "myvi"
+    t.text     "b9"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title", "created_at"], name: "index_animes_on_title_and_created_at"

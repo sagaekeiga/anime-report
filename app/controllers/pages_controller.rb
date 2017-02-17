@@ -4,4 +4,8 @@ class PagesController < ApplicationController
   
   def index_smart_phone
   end
+  
+  def post
+   @anime = Anime.new
+  end
 end

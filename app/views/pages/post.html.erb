@@ -1,0 +1,69 @@
+<%= form_for :anime, url: animes_path do |f| %>
+  <p>
+    <%= f.label :title, "タイトル" %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :content, "内容" %><br>
+    <%= f.text_area :content, cols: 60, rows: 8 %>
+  </p>
+  
+  <p>
+    <%= f.label :youtube, "youtube" %><br>
+    <%= f.text_area :youtube, cols: 60 %>
+  </p>
+  
+  <p>
+    <%= f.label :fc2, "FC2" %><br>
+    <%= f.text_area :fc2, cols: 60 %>
+  </p>
+  
+  <p>
+    <%= f.label :ani, "Ani" %><br>
+    <%= f.text_area :ani, cols: 60 %>
+  </p>
+  
+  <p>
+    <%= f.label :hima, "Hima" %><br>
+    <%= f.text_area :hima, cols: 60 %>
+  </p>
+
+  <p>
+    <%= f.label :gogo, "GoGo" %><br>
+    <%= f.text_area :gogo, cols: 60 %>
+  </p>
+  
+  <p>
+    <%= f.label :nova, "Nova" %><br>
+    <%= f.text_area :nova, cols: 60 %>
+  </p>
+  
+  <p>
+    <%= f.label :gooda, "GoodA" %><br>
+    <%= f.text_area :gooda, cols: 60 %>
+  </p>
+  
+  <p>
+    <%= f.label :kiss, "Kiss" %><br>
+    <%= f.text_area :kiss, cols: 60 %>
+  </p>
+ 
+  <p>
+    <%= f.label :myvi, "Myvi" %><br>
+    <%= f.text_area :myvi, cols: 60 %>
+  </p>
+
+  <p>
+    <%= f.label :b9, "B9" %><br>
+    <%= f.text_area :b9, cols: 60 %>
+  </p>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+
+
+

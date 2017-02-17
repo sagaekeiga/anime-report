@@ -11,15 +11,13 @@
 </div>
 <div class="col">
 
-	<div class="snsmenu">
 	<ul>
-		<li><a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a></li>
+		<!-- 1.モーダル表示のためのボタン -->
+		<a data-toggle="modal" data-target="#modal-example">免責事項</a>
 		<li><a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a></li>
-		<li><a href="#"><i class="fa fa-google-plus"></i><span>Google+</span></a></li>
+		<li><a href="#"><i class="fa fa-google-plus"></i><span>Twitter</span></a></li>
 		<li><a href="#"><i class="fa fa-rss"></i><span>RSS</span></a></li>
 	</ul>
-	</div>
-
 	<div class="copyright">
 	<p>Copyright &copy; CLIP</p>
 	</div>
@@ -28,3 +26,35 @@
 </div>
 </div>
 </footer>
+
+
+
+<!-- 2.モーダルの配置 -->
+<div class="modal" id="modal-example" tabindex="-1">
+    <div class="modal-dialog">
+
+        <!-- 3.モーダルのコンテンツ -->
+        <div class="modal-content">
+            <!-- 4.モーダルのヘッダ -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="modal-label">免責事項</h4>
+            </div>
+            <!-- 5.モーダルのボディ -->
+            <div class="modal-body">
+				当サイトはYouTube及び、その他動画投稿サイトで閲覧できるアニメのURLをまとめているリンク集サイトです。
+				運営者は、動画のアップロード、またはそれを推奨・援助する行為は一切行っておりません。
+				動画・音声等すべての知的所有権は著作者・団体に帰属しております。内容に関する質問は有権者に、動画のアップロード等の質問・削除依頼に関しましては各動画共有サイトへ直接お問合わせ下さい。
+				紹介記事には万全の注意を期しておりますが、リンクや情報の正確性、完全性を保証するものではありません。 万が一不適切な表現を掲載している箇所がございましたらお知らせいただければ削除などの対処をさせていただきます。
+				広告のお問い合わせはメールフォームからお知らせ下さい。（リンク切れ報告には利用しないでください） 
+				なお、当サイトの利用で生じた損害に対し、当サイト運営者は一切の責任を負うものではありません。
+            </div>
+            <!-- 6.モーダルのフッタ -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+            </div>
+        </div>
+    </div>
+</div>

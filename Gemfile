@@ -17,6 +17,7 @@ gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 gem 'devise'
 gem 'jpmobile'
+gem 'simple_form'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

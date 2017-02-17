@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pages#index'
   get 'pages/index_smart_phone', to: 'pages#index_smart_phone'
+  get 'pages/post', to: 'pages#post'
   
   resources :animes, only: [:create, :destroy, :show]
 

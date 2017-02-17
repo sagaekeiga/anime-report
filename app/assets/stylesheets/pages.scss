@@ -2,4 +2,79 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
+//index
+
+.id-header {
+ height: 50px;
+ background-color: yellow;
+}
+
+.id-main-box {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  min-height: 100px;
+  height: auto !important;
+  height: 50px;
+}
+.id-inline {
+ display: inline-block;
+}
+
+.ranking {
+ width: 200px;
+ height: 600px;
+ box-shadow: 0 2px 3px 0 #ddd;
+ min-height: 100px;
+ height: auto !important;
+ height: 50px;
+}
+
+.timeline {
+ width: 200px;
+ height: 600px;
+ box-shadow: 0 2px 3px 0 #ddd;
+ min-height: 100px;
+ height: auto !important;
+ height: 50px;
+}
+
+.we-index {
+ width: 200px;
+ box-shadow: 0 2px 3px 0 #ddd;
+ min-height: 100px;
+ height: auto !important;
+ height: 50px;
+}
+
+
+.id-ti {
+ width: 100%;
+ text-align: center;
+ height: 50px;
+}
+
+.id-tl-co {
+ width: 100%;
+ text-align: center;
+ height: 50px;
+ overflow: auto;
+}
+
+.id-pd {
+ padding: 5px;
+ font-size: 12px;
+}
+
+.id-we-border {
+ border-bottom: 1px solid gray;
+ padding: 5px 5px 5px 5px;
+}
+
+.id-we-day {
+ padding: 5px 5px 5px 5px;
+}
