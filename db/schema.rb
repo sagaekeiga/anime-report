@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220063938) do
+ActiveRecord::Schema.define(version: 20170220164808) do
 
   create_table "animes", force: :cascade do |t|
     t.text     "title"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 20170220063938) do
     t.text     "kiss"
     t.text     "myvi"
     t.text     "b9"
+    t.text     "daily"
+    t.text     "miomio"
+    t.text     "smove"
+    t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title", "created_at"], name: "index_animes_on_title_and_created_at"
@@ -59,6 +63,15 @@ ActiveRecord::Schema.define(version: 20170220063938) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "works", force: :cascade do |t|
+    t.text     "title"
+    t.text     "content"
+    t.text     "youtube"
+    t.date     "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

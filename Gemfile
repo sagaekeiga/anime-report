@@ -31,7 +31,6 @@ gem 'jbuilder'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 
-gem "anemone"
 gem "nokogiri"
 
 gem 'momentjs-rails'

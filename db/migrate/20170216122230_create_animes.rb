@@ -13,6 +13,10 @@ class CreateAnimes < ActiveRecord::Migration[5.0]
       t.text :kiss
       t.text :myvi
       t.text :b9
+      t.text :daily
+      t.text :miomio
+      t.text :smove
+      t.date :date
 
       t.timestamps
     end

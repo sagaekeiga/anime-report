@@ -4,12 +4,15 @@ Rails.application.routes.draw do
   get 'bots/detection', to: 'bots#detection'
   
   resources :bots, only: [:create, :destroy, :show, :index, :new, :edit, :update]
+  resources :works, only: [:create, :destroy, :show, :index, :new, :edit, :update]
 
   devise_for :users
   root 'pages#index'
   get 'pages/index_smart_phone', to: 'pages#index_smart_phone'
   get 'pages/post', to: 'pages#post'
-  
+
+
+  get 'animes/crawl_create', to: 'animes#crawl_create'
   resources :animes, only: [:create, :destroy, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
