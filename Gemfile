@@ -30,6 +30,13 @@ gem 'jbuilder'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+
+gem "anemone"
+gem "nokogiri"
+
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

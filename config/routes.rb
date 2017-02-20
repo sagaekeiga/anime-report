@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  get 'bots/crawl', to: 'bots#crawl'
+  get 'bots/detection', to: 'bots#detection'
+  
+  resources :bots, only: [:create, :destroy, :show, :index, :new, :edit, :update]
+
   devise_for :users
   root 'pages#index'
   get 'pages/index_smart_phone', to: 'pages#index_smart_phone'
