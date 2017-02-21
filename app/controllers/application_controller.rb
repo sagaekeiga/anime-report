@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
          @anime.daily = @daily.to_s
          @anime.miomio = @miomio.to_s
          @anime.smove = @smove.to_s
+         @anime.date = Date.today
          if @anime.save
            redirect_to root_path
          end

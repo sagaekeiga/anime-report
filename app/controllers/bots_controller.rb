@@ -37,7 +37,7 @@ class BotsController < ApplicationController
          @urls.push("#{bot.url}")
         end
 
-        doc = Nokogiri.HTML(open("http://tvanimedouga.blog93.fc2.com/blog-entry-31048.html"))
+        doc = Nokogiri.HTML(open("http://tvanimedouga.blog93.fc2.com/blog-entry-31007.html"))
         @title = doc.css('div.mainEntryBody')
           doc.css('a').each do |element|
               @ani = element[:href].to_s.match(%r{http://www.anitube.se/video.*$}) if !element[:href].to_s.match(%r{http://www.anitube.se/video.*$}).nil?

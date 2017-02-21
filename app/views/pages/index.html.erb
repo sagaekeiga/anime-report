@@ -12,11 +12,26 @@
   <div class="id-inline">
     <div class="timeline">
       <div class="id-ti">タイムライン</div>
-      <div class="id-pd">sssssssssss</div>
+      <div class="id-pd">
+        <% doc = Nokogiri.HTML(open("http://tvanimedouga.blog93.fc2.com/")) %>
+        <% doc.css('div > div > div > div > div > div > div > a').first(25).each do |element| %>
+         <% if !element[:title].nil? %>
+          <% ani = element[:title] %>
+         <% end %>
+          <%= ani %><br>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="id-inline"><div class="ranking">ランキング</div></div>
 </div>
+
+
+
+
+
+
+
 
 <%= render 'footer' %>
 

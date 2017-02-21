@@ -9,7 +9,9 @@
 </head>
 <body>
   
-<%= link_to "ホームへ", bots_path %>
+  <% if controller.controller_name == 'bots' %>
+    <%= link_to "ホームへ", bots_path %>
+  <% end %>
   
   <% if notice %>
     <p class="notice"><%= notice %></p>

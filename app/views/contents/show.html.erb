@@ -3,27 +3,15 @@
 <div class="sh-content">
     llll
     <div class="sh-if">
-        <iframe class="sh-if-self" width="560" height="315" src="<%= @work.youtube %>" frameborder="0" allowfullscreen></iframe>
+        <iframe class="sh-if-self" width="560" height="315" src="<%= @content.youtube %>" frameborder="0" allowfullscreen></iframe>
         <div class="sh-des">
-            <div class="sh-ani-tt"><%= @work.title %></div>
-            <div class="sh-ani-co"><%= @work.content %></div>
-            <%= @work.date %>
-            <% @anime = Anime.where(date: @work.date, title: @work.title) %>
-            <% @anime.each do |anime| %>
-              <%= link_to "【Youtube】", anime.youtube %>
-              <%= link_to "【FC2】", anime.fc2 %>
-              <%= link_to "【Anitube】", anime.ani %>
-              <%= link_to "【Himawari】", anime.hima %>
-              <%= link_to "【GoGo】", anime.gogo %>
-              <%= link_to "【Nova】", anime.nova %>
-              <%= link_to "【GoodA】", anime.gooda %>
-              <%= link_to "【Kiss】", anime.kiss %>
-              <%= link_to "【myvi】", anime.myvi %>
-              <%= link_to "【B9】", anime.b9 %>
-              <%= link_to "【Dailymotion】", anime.daily %>
-              <%= link_to "【Miomio】", anime.miomio %>
-              <%= link_to "【Saymove】", anime.smove %>
-            <% end %>
+            <div class="sh-ani-tt"><%= @content.title %></div>
+            <div class="sh-ani-co"><%= @content.story %></div>
+            <%= @content.story %>
+            <%= @content.broadcast %>
+            <%= @content.youtube %>
+            <%= @content.theme %>
+            <%= @content.cast %>
         </div>
     </div>
     
@@ -34,7 +22,7 @@
         dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
     </div>
 </div>
-<%= form_for([@work, @work.comments.build]) do |f| %>
+<%= form_for([@content, @content.comments.build]) do |f| %>
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -43,7 +31,8 @@
     <%= f.label :body %><br>
     <%= f.text_area :body %>
   </p>
-  
+ 
+
   <p>
     <%= f.submit %>
   </p>

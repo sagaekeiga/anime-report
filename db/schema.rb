@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220164808) do
+ActiveRecord::Schema.define(version: 20170221065255) do
 
   create_table "animes", force: :cascade do |t|
     t.text     "title"
@@ -42,6 +42,26 @@ ActiveRecord::Schema.define(version: 20170220164808) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title", "url", "page_id", "date"], name: "index_bots_on_title_and_url_and_page_id_and_date"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "name"
+    t.text     "body"
+    t.integer  "work_id"
+    t.integer  "content_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contents", force: :cascade do |t|
+    t.text     "title"
+    t.text     "story"
+    t.text     "broadcast"
+    t.text     "youtube"
+    t.text     "theme"
+    t.text     "cast"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
