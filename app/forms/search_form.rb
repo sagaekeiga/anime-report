@@ -1,6 +1,6 @@
 class SearchForm
   include ActiveModel::Model
-  attr_accessor  :title, :url, :page_id, :date
+  attr_accessor  :title
   
   ##部分一致させる
   def contains(arel_attribute, value)

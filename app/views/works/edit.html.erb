@@ -1,2 +1,32 @@
-<h1>Works#edit</h1>
-<p>Find me in app/views/works/edit.html.erb</p>
+<%= form_for(@work) do |f| %>
+  <p>
+    <%= f.label :main_title, "メインタイトル" %><br>
+    <%= f.text_field :main_title %>
+  </p>
+ 
+ <p>
+    <%= f.label :sub_title, "サブタイトル" %><br>
+    <%= f.text_field :sub_title %>
+  </p>
+  
+  <p>
+    <%= f.label :content, "内容" %><br>
+    <%= f.text_area :content, cols: 60, rows: 8 %>
+  </p>
+  
+  <p>
+    <%= f.label :youtube, "youtube" %><br>
+    <%= f.text_area :youtube, cols: 60 %>
+  </p>
+  
+  <div class='input-group date datepicker col-xs-4'>
+   <%= f.text_field :date, class: 'form-control input-sm' %>
+   <span class="input-group-addon">
+       <span class="fa fa-calendar"></span>
+   </span>
+  </div>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
 
+  root 'pages#index'
+
   get 'bots/crawl', to: 'bots#crawl'
   get 'bots/detection', to: 'bots#detection'
   
-  resources :bots, only: [:create, :destroy, :show, :index, :new, :edit, :update]
+  resources :bots, only: [:create, :destroy, :show, :index, :new, :edit, :update] do
+    member do
+      get :detection
+    end
+  end
   resources :works, only: [:create, :destroy, :show, :index, :new, :edit, :update] do
     resources :comments, only: [:create, :destroy]
   end
@@ -15,13 +21,13 @@ Rails.application.routes.draw do
   
 
   devise_for :users
-  root 'pages#index'
   get 'pages/index_smart_phone', to: 'pages#index_smart_phone'
+  get 'pages/detection', to: 'pages#detection'
 
 
-  get 'animes/crawl_create', to: 'animes#crawl_create'
   resources :animes, only: [:create, :destroy, :show]
-
+  
+  resources :contacts, only: [:new, :create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

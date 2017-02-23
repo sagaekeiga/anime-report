@@ -14,28 +14,30 @@
     <thead>
     <tr>
         <th scope="cols"></th>
-        <th scope="cols">メインタイトル</th>
-        <th scope="cols">サブタイトル</th>
-        <th scope="cols">内容</th>
+        <th scope="cols">タイトル</th>
+        <th scope="cols">ストーリー</th>
+        <th scope="cols">放送開始日</th>
         <th scope="cols">Youtube</th>
-        <th scope="cols">放映日</th>
+        <th scope="cols">テーマ</th>
+        <th scope="cols">声優</th>
         <th scope="cols">管理</th>
     </tr>
     </thead>
     <tbody>
         
-    <% @works.each do |work| %>
+    <% @contents.each do |content| %>
 
         <tr>
-            <th scope="row"><%= work.id %></th>
-    		<td><%= work.main_title %></td>
-    		<td><%= work.sub_title %></td>
-    		<td><%= work.content %></td>
-    		<td><%= link_to "#{work.youtube}", work.youtube %></td>
-    		<td><%= work.date %></td>
+            <th scope="row"><%= content.id %></th>
+    		<td><%= content.title %></td>
+    		<td><%= content.story %></td>
+    		<td><%= content.broadcast %></td>
+    		<td><%= link_to "#{content.youtube}", content.youtube %></td>
+    		<td><%= content.theme %></td>
+    		<td><%= content.cast %></td>
     		<td>
-    		    <%= link_to "編集", edit_work_path(work.id) %>
-    		    <%= link_to "削除", work, method: :delete, data: { confirm: "本当に削除してもいいですか？" } %>
+    		    <%= link_to "編集", edit_content_path(content.id) %>
+    		    <%= link_to "削除", content, method: :delete, data: { confirm: "本当に削除してもいいですか？" } %>
     		    
     		</td>
         </tr>

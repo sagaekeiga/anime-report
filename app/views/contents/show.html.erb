@@ -1,41 +1,44 @@
 <%= render 'pages/header' %>
 
-<div class="sh-content">
-    llll
+    <iframe class="sh-if-self" width="560" height="315" src="<%= @content.youtube %>" frameborder="0" allowfullscreen></iframe>
     <div class="sh-if">
-        <iframe class="sh-if-self" width="560" height="315" src="<%= @content.youtube %>" frameborder="0" allowfullscreen></iframe>
-        <div class="sh-des">
-            <div class="sh-ani-tt"><%= @content.title %></div>
-            <div class="sh-ani-co"><%= @content.story %></div>
-            <%= @content.story %>
-            <%= @content.broadcast %>
-            <%= @content.youtube %>
-            <%= @content.theme %>
-            <%= @content.cast %>
-        </div>
+            <div class="sh-tt"><%= simple_format(@content.title) %><%= "PV" + "#{@content.impressionist_count}" %></div><br>
+            <div class="sh-st"><%= simple_format(@content.story) %></div><br>
+            <div class="sh-st"><%= simple_format(@content.broadcast) %></div><br>
+            <div class="sh-st"><%= simple_format(@content.theme) %></div><br>
+            <div class="sh-st"><%= simple_format(@content.cast) %></div><br>
+            <% @works.each do |work| %>
+             <%= link_to "#{work.sub_title}", work %><br><br>
+            <% end %>
+    <div class="sh-ct">コメント一覧</h2></div>
+    <% @content.comments.each do |comment| %>
+      <div class="sh-cm">
+        <strong>投稿者:</strong>
+        <%= comment.name %>
+      </p>
+    
+      <p>
+        <strong>内容:</strong>
+        <%= comment.body %>
+      </p>
+      </div>
+    <% end %>
+    <%= form_for([@content, @content.comments.build]) do |f| %>
+      <p>
+        <%= f.text_field :name, class: :"form-control", placeholder: :"名前"%>
+      </p>
+      <p>
+        <%= f.text_area :body, class: :"form-control", placeholder: :"内容"%>
+      </p>
+     
+    
+      <p>
+        <%= f.submit "投稿する", class: :"btn btn-primary"%>
+      </p>
+    <% end %>
     </div>
     
-    
-    <div class="sh-index">
-    </div>
-    <div class="sh-comments">
-        dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-    </div>
-</div>
-<%= form_for([@content, @content.comments.build]) do |f| %>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </p>
- 
 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+
 
 

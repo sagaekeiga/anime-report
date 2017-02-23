@@ -1,2 +1,35 @@
-<h1>Contents#edit</h1>
-<p>Find me in app/views/contents/edit.html.erb</p>
+<%= form_for(@content) do |f| %>
+  <p>
+    <%= f.label :title, "タイトル" %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :story, "ストーリー" %><br>
+    <%= f.text_area :story, cols: 60, rows: 8 %>
+  </p>
+  
+  <p>
+    <%= f.label :broadcast, "放送期間" %><br>
+    <%= f.text_area :broadcast, cols: 60, rows: 8 %>
+  </p>
+  
+  <p>
+    <%= f.label :youtube, "youtube" %><br>
+    <%= f.text_area :youtube, cols: 60 %>
+  </p>
+  
+  <p>
+    <%= f.label :theme, "音楽" %><br>
+    <%= f.text_area :theme, cols: 60 %>
+  </p>
+  
+  <p>
+    <%= f.label :cast, "声優" %><br>
+    <%= f.text_area :cast, cols: 60 %>
+  </p>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

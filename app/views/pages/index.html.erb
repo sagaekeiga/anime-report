@@ -4,7 +4,22 @@
   <div class="id-inline">
     <div class="we-index">
     <div class="id-ti">放映中アニメ</div>
-    <div class="id-pd"><%= render 'week_sidebar' %></div>
+    <div class="id-pd">
+      <% doc = Nokogiri.HTML(open("http://tvanimedouga.blog93.fc2.com/")) %>
+      <% doc.css('#menu1Block > div:nth-child(4) > div.menu1BlockBody > div > div > ul > li > a').each do |element| %>
+      
+        <% ani = element.inner_html %>
+        
+        <% @content = Content.find_by(title: ani) %>
+
+          <% if !@content.blank? %>
+          <% if ani == @content.title %>
+            <%= link_to "#{ani}",  @content %><br>
+          <% end %>
+          <% end %>
+        
+      <% end %>
+    </div>
 
     </div>
   </div>
@@ -15,15 +30,36 @@
       <div class="id-pd">
         <% doc = Nokogiri.HTML(open("http://tvanimedouga.blog93.fc2.com/")) %>
         <% doc.css('div > div > div > div > div > div > div > a').first(25).each do |element| %>
+        
          <% if !element[:title].nil? %>
           <% ani = element[:title] %>
          <% end %>
-          <%= ani %><br>
+         
+          <% @work = Work.find_by(sub_title: ani) %>
+          
+          <% if !@work.blank? %>
+          <% if ani == @work.title %>
+            <%= link_to "#{ani}",  @work %><br>
+          <% end %>
+          <% end %>
+          
         <% end %>
       </div>
     </div>
   </div>
-  <div class="id-inline"><div class="ranking">ランキング</div></div>
+  <div class="id-inline">
+    <div class="ranking">
+    <div class="id-ti">ランキング</div>
+        <% ids = Impression.group(:impressionable_id).order('count_all desc').limit(10).count.keys %>
+        <% @ranks = Work.where(:id => ids) %>
+        <% @ranks = ids.map {|id| @ranks.detect {|rank| rank.id == id } } %>
+        <% @ranks.map(&:id) %>
+      <% @ranks.each do |rank| %>
+        <%= rank.impressionist_count %>
+        <%= link_to "#{rank.sub_title}", rank %><br>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 

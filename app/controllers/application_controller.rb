@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
     def crawl_create
          @anime = Anime.new
          @anime.title = @title.inner_text
-         @anime.content = "a"
          @anime.youtube = @youtube.to_s
          @anime.fc2 = @fc2.to_s
          @anime.ani = @ani.to_s
@@ -22,8 +21,6 @@ class ApplicationController < ActionController::Base
          @anime.miomio = @miomio.to_s
          @anime.smove = @smove.to_s
          @anime.date = Date.today
-         if @anime.save
-           redirect_to root_path
-         end
+         @anime.save
     end
 end

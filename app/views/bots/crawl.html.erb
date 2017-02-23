@@ -1,1 +1,8 @@
-<%= @title.inner_text %>
+<%= @title %>
+<%= @ani %>
+<%= @hima %>
+<%= @daily %>
+<%= @miomio %>
+<% @bots.each do |bot| %>
+ <%= bot.url %>
+<% end %>

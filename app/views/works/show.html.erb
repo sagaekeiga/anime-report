@@ -1,52 +1,53 @@
 <%= render 'pages/header' %>
 
-<div class="sh-content">
-    llll
-    <div class="sh-if">
+
         <iframe class="sh-if-self" width="560" height="315" src="<%= @work.youtube %>" frameborder="0" allowfullscreen></iframe>
-        <div class="sh-des">
-            <div class="sh-ani-tt"><%= @work.title %></div>
+
+    <div class="sh-if">
+            <div class="sh-ani-tt"><%= simple_format(@work.sub_title) %><%= "PV" + "#{@work.impressionist_count}" %></div>
             <div class="sh-ani-co"><%= @work.content %></div>
-            <%= @work.date %>
-            <% @anime = Anime.where(date: @work.date, title: @work.title) %>
-            <% @anime.each do |anime| %>
-              <%= link_to "【Youtube】", anime.youtube %>
-              <%= link_to "【FC2】", anime.fc2 %>
-              <%= link_to "【Anitube】", anime.ani %>
-              <%= link_to "【Himawari】", anime.hima %>
-              <%= link_to "【GoGo】", anime.gogo %>
-              <%= link_to "【Nova】", anime.nova %>
-              <%= link_to "【GoodA】", anime.gooda %>
-              <%= link_to "【Kiss】", anime.kiss %>
-              <%= link_to "【myvi】", anime.myvi %>
-              <%= link_to "【B9】", anime.b9 %>
-              <%= link_to "【Dailymotion】", anime.daily %>
-              <%= link_to "【Miomio】", anime.miomio %>
-              <%= link_to "【Saymove】", anime.smove %>
-            <% end %>
-        </div>
-    </div>
-    
-    
-    <div class="sh-index">
-    </div>
-    <div class="sh-comments">
-        dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-    </div>
-</div>
-<%= form_for([@work, @work.comments.build]) do |f| %>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </p>
-  
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+            <% @anime = Anime.find_by(title: @work.sub_title) %>
 
-
+            <% @anime = Anime.find_by(date: @work.date, title: @work.sub_title) %>
+              <%= link_to "【Youtube】", @anime.youtube if !@anime.youtube.blank? %>
+              <%= link_to "【FC2】", @anime.fc2 if !@anime.fc2.blank? %>
+              <%= link_to "【Anitube】", @anime.ani if !@anime.ani.blank? %>
+              <%= link_to "【Himawari】", @anime.hima if !@anime.hima.blank? %>
+              <%= link_to "【GoGo】", @anime.gogo if !@anime.gogo.blank? %>
+              <%= link_to "【Nova】", @anime.nova if !@anime.nova.blank? %>
+              <%= link_to "【GoodA】", @anime.gooda if !@anime.gooda.blank? %>
+              <%= link_to "【Kiss】", @anime.kiss if !@anime.kiss.blank? %>
+              <%= link_to "【myvi】", @anime.myvi if !@anime.myvi.blank? %>
+              <%= link_to "【B9】", @anime.b9 if !@anime.b9.blank? %>
+              <%= link_to "【Dailymotion】", @anime.daily if !@anime.daily.blank? %>
+              <%= link_to "【Miomio】", @anime.miomio if !@anime.miomio.blank? %>
+              <%= link_to "【Saymove】", @anime.smove if !@anime.smove.blank? %>
+              
+              
+    <div class="sh-ct">コメント一覧</h2></div>
+    <% @work.comments.each do |comment| %>
+      <div class="sh-cm">
+        <strong>投稿者:</strong>
+        <%= comment.name %>
+      </p>
+    
+      <p>
+        <strong>内容:</strong>
+        <%= comment.body %>
+      </p>
+      </div>
+    <% end %>
+    <%= form_for([@work, @work.comments.build]) do |f| %>
+      <p>
+        <%= f.text_field :name, class: :"form-control", placeholder: :"名前"%>
+      </p>
+      <p>
+        <%= f.text_area :body, class: :"form-control", placeholder: :"内容"%>
+      </p>
+     
+    
+      <p>
+        <%= f.submit "投稿する", class: :"btn btn-primary"%>
+      </p>
+    <% end %>
+    </div>

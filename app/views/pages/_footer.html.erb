@@ -3,10 +3,6 @@
 <div class="cols-inner">
 <div class="col">
 
-	<form action="#" class="search" method="get">
-	<input id="q" name="q" type="search" value=""><button type="submit"><i class="fa fa-search"></i><span>検索</span></button>
-	</form>
-
 
 </div>
 <div class="col">
@@ -14,7 +10,7 @@
 	<ul>
 		<!-- 1.モーダル表示のためのボタン -->
 		<a data-toggle="modal" data-target="#modal-example">免責事項</a>
-		<li><a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a></li>
+		<li><%= link_to "お問い合わせ", new_contact_path %></li>
 		<li><a href="#"><i class="fa fa-google-plus"></i><span>Twitter</span></a></li>
 		<li><a href="#"><i class="fa fa-rss"></i><span>RSS</span></a></li>
 	</ul>

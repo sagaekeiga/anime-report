@@ -31,25 +31,23 @@ class BotsController < ApplicationController
     
     def crawl
         @bots = Bot.where(date: Date.today)
-        @urls = []
 
         @bots.each do |bot|
-         @urls.push("#{bot.url}")
+        doc = Nokogiri.HTML(open("#{bot.url}"))
+            @title = doc.css('div.mainEntryBody')
+              doc.css('a').each do |element|
+                  @ani = element[:href].to_s.match(%r{http://www.anitube.se/video.*$}) if !element[:href].to_s.match(%r{http://www.anitube.se/video.*$}).nil?
+                  @hima = element[:href].to_s.match(%r{http://himado.in/\d{6}}) if !element[:href].to_s.match(%r{http://himado.in/\d{6}}).nil?
+                  @daily = element[:href].to_s.match(%r{http://www.dailymotion.com/video.*$}) if !element[:href].to_s.match(%r{http://www.dailymotion.com/video.*$}).nil?
+                  @miomio = element[:href].to_s.match(%r{http://www.miomio.tv/watch.*$}) if !element[:href].to_s.match(%r{http://www.miomio.tv/watch.*$}).nil?
+                  @b9 = element[:href].to_s.match(%r{http://up.*$}) if !element[:href].to_s.match(%r{http://up.*$}).nil?
+                  @youtube = element[:href].to_s.match(%r{https://www.youtube.com/watch.*$}) if !element[:href].to_s.match(%r{https://www.youtube.com/watch.*$}).nil?
+                  @smove = element[:href].to_s.match(%r{http://say-move.org/comeplay.*$}) if !element[:href].to_s.match(%r{http://say-move.org/comeplay.*$}).nil?
+              end
+            crawl_create
+        
         end
-
-        doc = Nokogiri.HTML(open("http://tvanimedouga.blog93.fc2.com/blog-entry-31007.html"))
-        @title = doc.css('div.mainEntryBody')
-          doc.css('a').each do |element|
-              @ani = element[:href].to_s.match(%r{http://www.anitube.se/video.*$}) if !element[:href].to_s.match(%r{http://www.anitube.se/video.*$}).nil?
-              @hima = element[:href].to_s.match(%r{http://himado.in/\d{6}}) if !element[:href].to_s.match(%r{http://himado.in/\d{6}}).nil?
-              @daily = element[:href].to_s.match(%r{http://www.dailymotion.com/video.*$}) if !element[:href].to_s.match(%r{http://www.dailymotion.com/video.*$}).nil?
-              @miomio = element[:href].to_s.match(%r{http://www.miomio.tv/watch.*$}) if !element[:href].to_s.match(%r{http://www.miomio.tv/watch.*$}).nil?
-              @b9 = element[:href].to_s.match(%r{http://up.*$}) if !element[:href].to_s.match(%r{http://up.*$}).nil?
-              @youtube = element[:href].to_s.match(%r{https://www.youtube.com/watch.*$}) if !element[:href].to_s.match(%r{https://www.youtube.com/watch.*$}).nil?
-              @smove = element[:href].to_s.match(%r{http://say-move.org/comeplay.*$}) if !element[:href].to_s.match(%r{http://say-move.org/comeplay.*$}).nil?
-          end
-        crawl_create
-
+        redirect_to root_path
     end
     
     def edit
@@ -63,8 +61,9 @@ class BotsController < ApplicationController
     end
     
     def detection ##検索結果表示ページを表示
+      @a = "ここはdetection"
       @b_search_form = SearchForm.new(params[:b_search])
-      @search_bots = @b_search_form.bot_search(@b_search_form.name)
+      @search_bots = @b_search_form.bot_search(@b_search_form.title)
     end
     
       private
@@ -74,6 +73,6 @@ class BotsController < ApplicationController
         end
         
         def detection_params
-          params.require(:bot).permit(:title)
+          params.require(:b_search).permit(:title)
         end
 end
