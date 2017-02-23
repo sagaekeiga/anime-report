@@ -4,6 +4,9 @@ class PagesController < ApplicationController
 
   def index
       @b_search_form = SearchForm.new
+      ids = Impression.group(:impressionable_id).order('count_all desc').limit(10).count.keys
+      @ranks = Work.where(:id => ids)
+      @ranks = ids.map {|id| @ranks.detect {|rank| rank.id == id } }
   end
   
   def index_smart_phone
