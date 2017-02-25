@@ -9,7 +9,7 @@
             <% @anime = Anime.find_by(title: @work.sub_title) %>
 
             <% @anime = Anime.find_by(date: @work.date, title: @work.sub_title) %>
-              <%= link_to "【Youtube】", @anime.youtube if !@anime.youtube.blank? %>
+              <%= link_to "【Youtube】", @anime.youtube if !@anime.youtube.nil? %>
               <%= link_to "【FC2】", @anime.fc2 if !@anime.fc2.blank? %>
               <%= link_to "【Anitube】", @anime.ani if !@anime.ani.blank? %>
               <%= link_to "【Himawari】", @anime.hima if !@anime.hima.blank? %>

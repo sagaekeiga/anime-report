@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -34,7 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "nokogiri"
 gem 'impressionist'
-
+gem "mysql2"
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
 
@@ -61,8 +60,10 @@ group :development do
   gem 'capistrano-rails'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'sqlite3'
 end
 
 group :production do
   gem 'unicorn'
+  gem "mysql2"
 end
