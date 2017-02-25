@@ -8,7 +8,6 @@ class ContentsController < ApplicationController
   end
   
   def show
-      @b_search_form = SearchForm.new
       @content = Content.find(params[:id])
       @works = Work.where(main_title: @content.title).order("date")
   end
@@ -21,7 +20,6 @@ class ContentsController < ApplicationController
   end
   
   def index
-      @b_search_form = SearchForm.new
       @contents = Content.all
   end
   

@@ -1,6 +1,5 @@
 class BotsController < ApplicationController
 
-    include ActiveModel::Model
 
     def new
      @bot = Bot.new
@@ -57,12 +56,6 @@ class BotsController < ApplicationController
         @bot = Bot.find(params[:id])
         @bot.update(bot_params)
         render 'edit'
-    end
-    
-    def detection ##検索結果表示ページを表示
-      @a = "ここはdetection"
-      @b_search_form = SearchForm.new(params[:b_search])
-      @search_bots = @b_search_form.bot_search(@b_search_form.title)
     end
     
       private

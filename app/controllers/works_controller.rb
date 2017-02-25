@@ -18,13 +18,11 @@ class WorksController < ApplicationController
   end
 
   def show
-      @b_search_form = SearchForm.new
       @work = Work.find(params[:id])
       @rank = REDIS.zincrby "works/all/#{Date.today.to_s}", 1, @work.id
   end
 
   def index
-      @b_search_form = SearchForm.new
       @works = Work.all
   end
 
