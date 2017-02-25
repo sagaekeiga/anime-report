@@ -3,13 +3,6 @@
   <div class="id-inline"><%= link_to "アメニティ", root_path %></div>
   
   <div class="id-inline">
-    <form class="form-inline" role="form">
-        <%= form_for(@b_search_form, as: 'b_search', url: pages_detection_path, html: {method: :get}) do |f| %>
-        　<%= f.text_field :title,  placeholder: "検索", class: :"form-control input-sm",　size: :"150"%>
-          <%= button_tag(class: :"form-control input-sm", size: :"10") do %>
-           <%= image_tag('search.png', { :border => '0', :alt => '検索'}) %>
-          <% end %>
-        <% end %>
-    </form>
+
   </div>
 </div>

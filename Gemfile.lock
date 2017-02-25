@@ -160,6 +160,7 @@ GEM
     raindrops (0.17.0)
     rake (12.0.0)
     rdoc (4.3.0)
+    redis (3.3.3)
     ref (2.0.0)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
@@ -243,6 +244,7 @@ DEPENDENCIES
   mysql2
   nokogiri
   rails
+  redis
   sass-rails
   sdoc (~> 0.4.0)
   simple_form

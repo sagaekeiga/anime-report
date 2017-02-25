@@ -21,7 +21,6 @@ class BotsController < ApplicationController
     end
     
     def index
-      @b_search_form = SearchForm.new
       @bots = Bot.all
     end
     

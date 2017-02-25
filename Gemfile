@@ -32,10 +32,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 
 gem "nokogiri"
-gem 'impressionist'
-gem "mysql2"
+
+
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
+
+gem 'redis'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -1,13 +1,5 @@
 <%= link_to "新規登録", new_bot_path %>
 
-<form class="form-inline col-xs-2" role="form">
-    <%= form_for(@b_search_form, as: 'b_search', url: pages_s_detection_path, html: {method: :get}) do |f| %>
-    　<%= f.text_field :title,  placeholder: "検索", class: :"form-control input-sm" %>
-      <%= button_tag(class: :"form-control input-sm", size: :"10") do %>
-       <%= image_tag('search.png', { :border => '0', :alt => '検索'}) %>
-      <% end %>
-    <% end %>
-</form>
 
 <div class="col-xs-12">
 <table class="type07">

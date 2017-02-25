@@ -1,7 +1,5 @@
 class WorksController < ApplicationController
   
-  impressionist actions: [:show]
-  
   def create
      @work = Work.new(work_params)
      @work.save!
@@ -22,7 +20,7 @@ class WorksController < ApplicationController
   def show
       @b_search_form = SearchForm.new
       @work = Work.find(params[:id])
-      impressionist(@work)
+      @rank = REDIS.zincrby "works/all/#{Date.today.to_s}", 1, @work.id
   end
 
   def index
