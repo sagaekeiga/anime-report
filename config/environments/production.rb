@@ -9,7 +9,19 @@ Rails.application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
-  ENV["REDIS"] = "http://candate.tk/:6379"
+  config.action_mailer.default_url_options = { host: 'http://candate.tk/', port: 80 }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => 'smtp.gmail.com',
+    :user_name => "sagae5.28rujeae@gmail.com",
+    :password => "cnchhssakwmmfnry",
+    :authentication => 'login'
+  }
+  ENV["REDIS"] = "localhost:6379"
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
