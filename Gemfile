@@ -38,6 +38,7 @@ gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
 
 gem 'redis'
+gem 'sqlite3'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -62,10 +63,8 @@ group :development do
   gem 'capistrano-rails'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'sqlite3'
 end
 
 group :production do
   gem 'unicorn'
-  gem "mysql2"
 end
