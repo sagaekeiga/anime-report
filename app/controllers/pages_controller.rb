@@ -1,8 +1,9 @@
 class PagesController < ApplicationController
     
-  http_basic_authenticate_with name: "寒河江京我", password: "s19930528", :only => :post
 
   def index
+    @works = Work.all.sort_by(&:created_at).reverse
+    @q = Work.search(params[:q])
   end
   
   def index_smart_phone

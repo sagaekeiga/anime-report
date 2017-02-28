@@ -3,6 +3,15 @@
   <div class="id-inline"><%= link_to "アメニティ", root_path %></div>
   
   <div class="id-inline">
+<%# form_for の代わりに search_form_for を使うことで検索フォームを作成 %>
+<%= search_form_for @q do |f| %>
 
+  <%# start 特定の文字列で始まる商品名で検索 %>
+  <%= f.search_field :main_title_cont, :placeholder => "作品名" %>
+  <br />
+
+  <%# 検索ボタン %>
+  <%= f.submit %>
+<% end %>
   </div>
 </div>

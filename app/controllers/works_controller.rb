@@ -23,7 +23,8 @@ class WorksController < ApplicationController
   end
 
   def index
-      @works = Work.all
+    @q        = Work.search(params[:q])
+    @products = @q.result(distinct: true)
   end
 
   def update
