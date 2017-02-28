@@ -41,6 +41,9 @@ gem 'redis'
 gem 'sqlite3'
 
 gem "ransack"
+gem "mysql2"
+
+
 gem 'administrate'
 gem 'bourbon'
 
