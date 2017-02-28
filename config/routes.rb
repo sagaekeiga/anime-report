@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    resources :users
+resources :animes
+resources :bots
+resources :comments
+resources :contacts
+resources :contents
+resources :works
+
+    root to: "users#index"
+  end
+
   root 'pages#index'
 
   get 'bots/crawl', to: 'bots#crawl'

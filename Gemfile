@@ -41,6 +41,8 @@ gem 'redis'
 gem 'sqlite3'
 
 gem "ransack"
+gem 'administrate'
+gem 'bourbon'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
