@@ -8,6 +8,5 @@ class CreateBots < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :bots, [:title, :url, :page_id, :date]
   end
 end

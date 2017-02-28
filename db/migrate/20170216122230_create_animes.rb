@@ -19,6 +19,6 @@ class CreateAnimes < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :animes, [:title, :created_at]
+    add_index :animes, [:created_at]
   end
 end
