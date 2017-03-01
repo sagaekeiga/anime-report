@@ -1,0 +1,16 @@
+<div class="sh-if">
+   <% if !@works.blank? %>
+         <% @works.each do |work| %>
+        　<div class="sh-ani-co">
+           <div class="id-inline-wk"><iframe class="wk-in-se" width="110" height="75" src="<%= work.youtube %>" frameborder="0" allowfullscreen></iframe></div>
+           <div class="id-inline-wk">
+            <%= link_to "#{work.sub_title}", work %><br>
+            <%= work.date %><br>
+           </div>
+          </div>
+         <% end %>
+   <% end %>
+   <% if @works.blank? %>
+    一致する作品はありませんでした。
+   <% end %>
+</div>

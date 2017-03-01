@@ -18,13 +18,15 @@ class WorksController < ApplicationController
   end
 
   def show
+      @q        = Work.search(params[:q])
       @work = Work.find(params[:id])
       @rank = REDIS.zincrby "works/all/#{Date.today.to_s}", 1, @work.id
+      @iframe = Content.find_by(title: @work.main_title)
   end
 
   def index
     @q        = Work.search(params[:q])
-    @products = @q.result(distinct: true)
+    @works = @q.result(distinct: true)
   end
 
   def update

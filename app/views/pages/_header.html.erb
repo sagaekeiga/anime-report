@@ -1,17 +1,12 @@
 <div class="id-header">
   
-  <div class="id-inline"><%= link_to "アメニティ", root_path %></div>
-  
-  <div class="id-inline">
-<%# form_for の代わりに search_form_for を使うことで検索フォームを作成 %>
-<%= search_form_for @q do |f| %>
 
-  <%# start 特定の文字列で始まる商品名で検索 %>
-  <%= f.search_field :main_title_cont, :placeholder => "作品名" %>
-  <br />
-
-  <%# 検索ボタン %>
-  <%= f.submit %>
-<% end %>
+  <div class="id-inline"><%= link_to "キャンディィ", root_path %></div>
+  <div class="id-inline form-inline">
+    <%= search_form_for @q do |f| %>
+      <%= f.search_field :main_title_cont, :placeholder => "作品名", class: :"form-control input-sm" %>
+      <%= f.submit :class => "form-control input-sm"%>
+    <% end %>
   </div>
+  <div class="id-inline"><%= link_to "動画一覧", contents_path %></div>
 </div>

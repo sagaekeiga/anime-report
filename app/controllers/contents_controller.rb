@@ -8,6 +8,7 @@ class ContentsController < ApplicationController
   end
   
   def show
+      @q = Work.search(params[:q])
       @content = Content.find(params[:id])
       @works = Work.where(main_title: @content.title).order("date")
   end
@@ -20,7 +21,7 @@ class ContentsController < ApplicationController
   end
   
   def index
-      @contents = Content.all
+      @contents = Content.all.order("title")
   end
   
   def update
