@@ -28,7 +28,7 @@ class BotsController < ApplicationController
     end
     
     def crawl
-        @bots = Bot.where(date: Date.today)
+        @bots = Bot.all
 
         @bots.each do |bot|
         doc = Nokogiri.HTML(open("#{bot.url}"))
