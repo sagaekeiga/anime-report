@@ -50,7 +50,9 @@
   <div class="id-inline">
     <div class="ranking">
     <div class="id-ti">ランキング</div>
-      <%= @ranks %>
+      <% @ranks.each do |rank| %>
+       <%= link_to "#{rank.sub_title}", rank %><br>
+      <% end %>
     </div>
   </div>
 </div>
