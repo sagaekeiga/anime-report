@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20170223024641) do
     t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["title", "created_at"], name: "index_animes_on_title_and_created_at"
+    t.index ["created_at"], name: "index_animes_on_created_at"
   end
 
   create_table "bots", force: :cascade do |t|
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 20170223024641) do
     t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["title", "url", "page_id", "date"], name: "index_bots_on_title_and_url_and_page_id_and_date"
   end
 
   create_table "comments", force: :cascade do |t|

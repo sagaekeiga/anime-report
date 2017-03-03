@@ -1,5 +1,4 @@
 <%= render 'header' %>
-
 <div class="id-main-box">
   <div class="id-inline">
     <div class="we-index">
@@ -28,21 +27,8 @@
     <div class="timeline">
       <div class="id-ti">タイムライン</div>
       <div class="id-pd">
-        <% doc = Nokogiri.HTML(open("http://tvanimedouga.blog93.fc2.com/")) %>
-        <% doc.css('div > div > div > div > div > div > div > a').first(25).each do |element| %>
-        
-         <% if !element[:title].nil? %>
-          <% ani = element[:title] %>
-         <% end %>
-         
-          <% @work = Work.find_by(sub_title: ani) %>
-          
-          <% if !@work.blank? %>
-          <% if ani == @work.title %>
-            <%= link_to "#{ani}",  @work %><br>
-          <% end %>
-          <% end %>
-          
+        <% @works.first(20).each do |work|%>
+          <%= link_to "#{work.sub_title.truncate(16)}", work %><br>
         <% end %>
       </div>
     </div>

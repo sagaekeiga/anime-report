@@ -1,7 +1,9 @@
 <%= render 'pages/header' %>
 
-    <iframe class="sh-if-self" width="560" height="315" src="<%= @iframe.youtube %>" frameborder="0" allowfullscreen></iframe>
-
+    <% if !@iframe.blank? %>
+      <iframe class="sh-if-self" width="560" height="315" src="<%= @iframe.youtube %>" frameborder="0" allowfullscreen></iframe>
+    <% end %>
+    
     <div class="sh-if">
             <div class="sh-ani-tt"><%= simple_format(@work.sub_title) %><%= @rank.to_i %></div>
             <div class="sh-ani-co"><%= @work.content %></div>

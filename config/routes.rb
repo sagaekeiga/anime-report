@@ -15,8 +15,8 @@ resources :works
   root 'pages#index'
 
   get 'bots/crawl', to: 'bots#crawl'
-  get 'bots/detection', to: 'bots#detection'
-  
+  get 'bots/scraping', to: 'bots#scraping'
+
   resources :bots, only: [:create, :destroy, :show, :index, :new, :edit, :update]
   resources :works, only: [:create, :destroy, :show, :index, :new, :edit, :update] do
     resources :comments, only: [:create, :destroy]

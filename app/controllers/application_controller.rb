@@ -4,7 +4,10 @@ class ApplicationController < ActionController::Base
   include Jpmobile::ViewSelector
   protect_from_forgery with: :exception
   
-    def crawl_create
+    def crawl_create(data)
+        @anime = Anime.find_by(title: @title.inner_text)
+        @work = Work.find_by(sub_title: data.title)
+        if @anime.nil?
          @anime = Anime.new
          @anime.title = @title.inner_text
          @anime.youtube = @youtube.to_s
@@ -20,7 +23,8 @@ class ApplicationController < ActionController::Base
          @anime.daily = @daily.to_s
          @anime.miomio = @miomio.to_s
          @anime.smove = @smove.to_s
-         @anime.date = Date.today
+         @anime.date = @work.date
          @anime.save
+        end
     end
 end
