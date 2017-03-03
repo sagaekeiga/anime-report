@@ -1,11 +1,14 @@
-<div class="sh-if">
+<div class="ind-wk">
    <% if !@works.blank? %>
          <% @works.each do |work| %>
         　<div class="sh-ani-co">
-           <div class="id-inline-wk"><iframe class="wk-in-se" width="110" height="75" src="<%= work.youtube %>" frameborder="0" allowfullscreen></iframe></div>
+           <% @iframe = Content.find_by(title: "%" + work.main_title[0..3] + "%") %>
+           <% if !@iframe.blank? %>
+            <div class="id-inline-wk"><iframe class="wk-in-se" width="110" height="75" src="<%= @iframe.youtube %>" frameborder="0" allowfullscreen></iframe></div>
+           <% end %>
            <div class="id-inline-wk">
             <%= link_to "#{work.sub_title}", work %><br>
-            <%= work.date %><br>
+            <%= work.date.strftime("%-m月 %-d日")%><br>
            </div>
           </div>
          <% end %>

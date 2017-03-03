@@ -1,4 +1,3 @@
-<%= render 'header' %>
 <div class="id-main-box">
   <div class="id-inline">
     <div class="we-index">
@@ -27,8 +26,9 @@
     <div class="timeline">
       <div class="id-ti">タイムライン</div>
       <div class="id-pd">
-        <% @works.reverse.first(20).each do |work|%>
-          <%= link_to "#{work.sub_title.truncate(16)}", work %><br>
+        <% @works.reverse.first(25).each do |work|%>
+          <%= work.date.strftime("%-m月 %-d日") %>
+          <%= link_to "#{work.sub_title.truncate(20)}", work %><br>
         <% end %>
       </div>
     </div>
@@ -36,8 +36,10 @@
   <div class="id-inline">
     <div class="ranking">
     <div class="id-ti">ランキング</div>
+    <% @i = 0%>
       <% @ranks.each do |rank| %>
-       <%= link_to "#{rank.sub_title}", rank %><br>
+       <%= @i += 1 %>
+       <%= link_to "#{rank.sub_title.truncate(20)}", rank %><br>
       <% end %>
     </div>
   </div>
@@ -45,6 +47,6 @@
 
 
 
-<%= render 'footer' %>
+  <%= render 'pages/footer' %>
 
 

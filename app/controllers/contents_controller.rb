@@ -22,6 +22,7 @@ class ContentsController < ApplicationController
   
   def index
       @contents = Content.all.order("title")
+      @q = Work.search(params[:q])
   end
   
   def update

@@ -11,3 +11,22 @@
 .wk-in-se {
  padding: 5px;
 }
+
+.ind-wk {
+  width: 560px;
+  background-color: white;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  min-height: 10px;
+  height: auto !important;
+  height: 50px;
+  text-align: center;
+  word-break: break-word;
+  border:1px solid rgb(238, 238, 238);
+  box-shadow:rgba(238, 238, 238, 0.509804) 9px 9px 10px -4px;
+  -webkit-box-shadow:rgba(238, 238, 238, 0.509804) 9px 9px 10px -4px;
+  -moz-box-shadow:rgba(238, 238, 238, 0.509804) 9px 9px 10px -4px;
+}
