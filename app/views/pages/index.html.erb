@@ -27,7 +27,7 @@
     <div class="timeline">
       <div class="id-ti">タイムライン</div>
       <div class="id-pd">
-        <% @works.reverse.last(20).each do |work|%>
+        <% @works.reverse.first(20).each do |work|%>
           <%= link_to "#{work.sub_title.truncate(16)}", work %><br>
         <% end %>
       </div>

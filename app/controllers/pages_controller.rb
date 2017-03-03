@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def index
     @q = Work.search(params[:q])
-    @works = Work.all
+    @works = Work.all.order(:created_at)
 
     ids = REDIS.zrevrangebyscore "works/daily/#{Date.yesterday.to_s}", "+inf", 0, limit: [0, 5]
     @ranking_articles = ids.map{ |id| Work.find(id) }
