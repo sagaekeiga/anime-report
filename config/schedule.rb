@@ -5,7 +5,9 @@ set :environment, :production
 
 #2時間ごとに動かす
 every 2.hours do
-  rake 'scraping:scraping'
+    within release_path do
+      execute :rake, 'scraping:scraping'
+    end
 end
 # Use this file to easily define all of your cron jobs.
 #
