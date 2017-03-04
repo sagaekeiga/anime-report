@@ -1,16 +1,37 @@
-class BotsController < ApplicationController
+namespace :scraping do
+  desc "auto_scraping"
+  task :scraping => :environment do
+        doc = Nokogiri.HTML(open("http://tvanimedouga.blog93.fc2.com/"))
+              doc.css('#mainBlock > div.index_area > div > div > a').each do |element|
+                  
+                @new_url = element[:href]
+                @test_bot = Bot.find_by(url: @new_url)
+                
+                    if @test_bot.blank?
+                        @work = Work.new
+                        doc_work = Nokogiri.HTML(open("#{@new_url}"))
+                        @work.main_title = doc_work.css('#mainBlock > div.mainEntryBlock > div.mainEntryTitle').inner_text
+                        @work.sub_title = doc_work.css('#mainBlock > div.mainEntryBlock > div.mainEntryBase > div.mainEntryBody').inner_text
+                        @work.date = Date.today
+                        @work.content = ""
+                        @work.youtube = ""
+                        @work.save!
+                        
+                        @bot = Bot.new
+                        @bot.title = doc_work.css('#mainBlock > div.mainEntryBlock > div.mainEntryBase > div.mainEntryBody').inner_text
+                        @bot.url = @new_url
+                        @bot.page_id = ""
+                        @bot.date = Date.today
+                        @bot.save!
+                        
+                    end
     
-    def index
-      @q = Work.search(params[:q])
-      @bots = Bot.all
-    end
-    
-    def show
-      @bot = Bot.find(params[:id])
-    end
-    
-    def crawl
-        @q = Work.search(params[:q])
+                end
+                crawl
+  end
+
+
+def crawl
 
         @bots = Bot.all
 
@@ -58,44 +79,5 @@ class BotsController < ApplicationController
                   p @smove = ""
         
         end
-        redirect_to root_path
     end
-    
-    def scraping
-        @q = Work.search(params[:q])
-
-        doc = Nokogiri.HTML(open("http://tvanimedouga.blog93.fc2.com/"))
-              doc.css('#mainBlock > div.index_area > div > div > a').each do |element|
-                  
-                @new_url = element[:href]
-                @test_bot = Bot.find_by(url: @new_url)
-                
-                    if @test_bot.blank?
-                        @work = Work.new
-                        doc_work = Nokogiri.HTML(open("#{@new_url}"))
-                        @work.main_title = doc_work.css('#mainBlock > div.mainEntryBlock > div.mainEntryTitle').inner_text
-                        @work.sub_title = doc_work.css('#mainBlock > div.mainEntryBlock > div.mainEntryBase > div.mainEntryBody').inner_text
-                        @work.date = Date.today
-                        @work.content = ""
-                        @work.youtube = ""
-                        @work.save!
-                        
-                        @bot = Bot.new
-                        @bot.title = doc_work.css('#mainBlock > div.mainEntryBlock > div.mainEntryBase > div.mainEntryBody').inner_text
-                        @bot.url = @new_url
-                        @bot.page_id = ""
-                        @bot.date = Date.today
-                        @bot.save!
-                        
-                    end
-    
-                end
-            redirect_to bots_crawl_path
-    end
-    
-      private
-      
-        def bot_params
-          params.require(:bot).permit(:title, :url, :page_id, :date)
-        end
 end

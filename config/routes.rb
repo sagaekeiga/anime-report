@@ -17,7 +17,7 @@ resources :works
   get 'bots/crawl', to: 'bots#crawl'
   get 'bots/scraping', to: 'bots#scraping'
 
-  resources :bots, only: [:create, :destroy, :show, :index, :new, :edit, :update]
+  resources :bots, only: [:show, :index]
   resources :works, only: [:create, :destroy, :show, :index, :new, :edit, :update] do
     resources :comments, only: [:create, :destroy]
   end
