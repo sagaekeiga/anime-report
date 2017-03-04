@@ -10,19 +10,19 @@
 
             <% @anime = Anime.find_by(date: @work.date, title: @work.sub_title) %>
             <% if !@anime.blank? %>
-              <%= link_to "【Youtube】", @anime.youtube if !@anime.youtube.blank? %>
-              <%= link_to "【FC2】", @anime.fc2 if !@anime.fc2.blank? %>
-              <%= link_to "【Anitube】", @anime.ani if !@anime.ani.blank? %>
-              <%= link_to "【Himawari】", @anime.hima if !@anime.hima.blank? %>
-              <%= link_to "【GoGo】", @anime.gogo if !@anime.gogo.blank? %>
-              <%= link_to "【Nova】", @anime.nova if !@anime.nova.blank? %>
-              <%= link_to "【GoodA】", @anime.gooda if !@anime.gooda.blank? %>
-              <%= link_to "【Kiss】", @anime.kiss if !@anime.kiss.blank? %>
-              <%= link_to "【myvi】", @anime.myvi if !@anime.myvi.blank? %>
-              <%= link_to "【B9】", @anime.b9 if !@anime.b9.blank? %>
-              <%= link_to "【Dailymotion】", @anime.daily if !@anime.daily.blank? %>
-              <%= link_to "【Miomio】", @anime.miomio if !@anime.miomio.blank? %>
-              <%= link_to "【Saymove】", @anime.smove if !@anime.smove.blank? %>
+              <%= link_to "【Youtube】", @anime.youtube , { :target => "_blank"} if !@anime.youtube.blank? %>
+              <%= link_to "【FC2】", @anime.fc2 , { :target => "_blank"} if !@anime.fc2.blank? %>
+              <%= link_to "【Anitube】", @anime.ani , { :target => "_blank"}if !@anime.ani.blank? %>
+              <%= link_to "【Himawari】", @anime.hima, { :target => "_blank"} if !@anime.hima.blank? %>
+              <%= link_to "【GoGo】", @anime.gogo , { :target => "_blank"}if !@anime.gogo.blank? %>
+              <%= link_to "【Nova】", @anime.nova, { :target => "_blank"} if !@anime.nova.blank? %>
+              <%= link_to "【GoodA】", @anime.gooda , { :target => "_blank"}if !@anime.gooda.blank? %>
+              <%= link_to "【Kiss】", @anime.kiss, { :target => "_blank"} if !@anime.kiss.blank? %>
+              <%= link_to "【myvi】", @anime.myvi, { :target => "_blank"} if !@anime.myvi.blank? %>
+              <%= link_to "【B9】", @anime.b9, { :target => "_blank"} if !@anime.b9.blank? %>
+              <%= link_to "【Dailymotion】", @anime.daily, { :target => "_blank"} if !@anime.daily.blank? %>
+              <%= link_to "【Miomio】", @anime.miomio, { :target => "_blank"} if !@anime.miomio.blank? %>
+              <%= link_to "【Saymove】", @anime.smove, { :target => "_blank"} if !@anime.smove.blank? %>
             <% end %>
               
     <div class="sh-ct">コメント一覧</h2></div>

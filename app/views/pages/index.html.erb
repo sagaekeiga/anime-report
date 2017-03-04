@@ -1,10 +1,22 @@
 <div class="sub-her">
   <div><%= link_to "キャンディィ|アニメ無料動画", root_path %></div>
-  <div class="sub-her-dis">アニメの無料動画をYoutubeでまとめたサイトです。</div>
+  <div class="sub-her-dis">アニメの無料動画をまとめたサイトです。</div>
 </div>
 <div class="id-main-box">
   <div class="id-inline">
     <div class="we-index">
+    <div class="id-tw">
+      アニメ速報はこちらで!!
+      <div class="id-tw-ic">
+        <%= link_to image_tag('twitter.png', { :border => '0', :size => "70x70", :alt => 'キャンディィアイコン', :class => 'tw-ic'}), 'https://twitter.com/candii_anime' %>
+      </div>
+    </div>
+    <div class="id-ti">
+      <%= search_form_for @q do |f| %>
+        <%= f.search_field :main_title_cont, :placeholder => "作品名", class: :"form-control input-sm" %>
+        <%= f.submit :class => "form-control input-sm"%>
+      <% end %>
+    </div><br><br><br>
     <div class="id-ti">放映中アニメ</div>
     <div class="id-pd">
       <% doc = Nokogiri.HTML(open("http://tvanimedouga.blog93.fc2.com/")) %>
@@ -36,15 +48,46 @@
         <% end %>
       </div>
     </div>
+    <div class="timeline_under">
+      <div class="id-pd">
+          <% @works.first(5).each do |work| %>
+          <div class="id-ti-bd">
+            <%= link_to"#{work.sub_title.truncate(25)}", work %>
+            <% if !work.blank? %>
+              <iframe width="280" height="205" src="<%= work.youtube %>" frameborder="0" allowfullscreen></iframe>
+            <% end %>
+          </div>
+          <% end %>
+      </div>
+    </div>
   </div>
+  
   <div class="id-inline">
     <div class="ranking">
-    <div class="id-ti">ランキング</div>
-    <% @i = 0%>
-      <% @ranks.each do |rank| %>
-       <%= @i += 1 %>
-       <%= link_to "#{rank.sub_title.truncate(20)}", rank %><br>
-      <% end %>
+      <div class="id-ti">ランキング</div>
+        <div class="id-pd">
+          <% @i = 0%>
+          <% @ranks.each do |rank| %>
+           <%= @i += 1 %>
+           <%= link_to "#{rank.sub_title.truncate(17)}", rank %><br>
+          <% end %>
+        </div>
+    </div>
+      
+    <div class="ranking">
+      <div class="id-ti">他のサイトを見てみる</div>
+        <div class="id-pd">
+         <%= link_to "Youtubeアニメ無料動画", "http://tvanimedouga.blog93.fc2.com/" %><br>
+         <%= link_to "アニポ無料アニメ動画まとめ", "http://anipo.jp/" %><br>
+         <%= link_to "高画質アニメ動画情報", "http://kodoanime01.blog136.fc2.com/" %><br>
+         <%= link_to "junkch", "http://junkch.com/" %><br>
+         <%= link_to "Gyao", "http://gyao.yahoo.co.jp/ct/anime/" %><br>
+         <%= link_to "特選★アニメ動画紹介所", "http://freeanimedougadesu.blog70.fc2.com/" %><br>
+         <%= link_to "アニメ動画倉庫.com", "http://anime.dougasouko.com/" %><br>
+         <%= link_to "無料動画一覧 | バンダイチャンネル｜好きなアニメを楽しもう！", "http://www.b-ch.com/ttl/frmv_list.php/" %><br>
+         <%= link_to "無料動画アニメポスト", "http://animepost.blog.fc2.com/" %><br>
+        </div>
+      </div>
     </div>
   </div>
 </div>
