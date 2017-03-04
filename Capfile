@@ -9,7 +9,7 @@ require 'capistrano/rbenv'
 require 'capistrano/bundler'
 require "whenever/capistrano"
 
-
+Dir.glob('lib/capistrano/tasks/scraping.rake').each { |r| import r }
 
 install_plugin Capistrano::SCM::Git
 
