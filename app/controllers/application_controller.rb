@@ -27,4 +27,20 @@ class ApplicationController < ActionController::Base
          anime.save
         end
     end
+
+      def post
+        tweet = Tweet.order('rand()').first
+        p status = tweet.text + "が更新されました！" + "http://candii.tk/"
+        twitter_client
+        @client.update(status)
+      end
+
+      def twitter_client
+        @client = Twitter::REST::Client.new do |config|
+        config.consumer_key        = "5UsgucSdL9yzkHLdpxGTthfBg"
+        config.consumer_secret     = "g8n1QPviyy6bpG55MkbLh9g6QfKV2aKl1ZQEJ6VUXLTeSuAsch"
+        config.access_token        = "838030459871223811-wlz0KWpsigG7YDu0BXAwUsw1j3lSpTk"
+        config.access_token_secret = "uSxO2FcYAO50RUzvZvoxrFsH1r32qmdDXr4xuxQhGcHcw"
+        end
+      end
 end

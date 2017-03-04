@@ -47,6 +47,10 @@ class BotsController < ApplicationController
                    anime.smove = @smove.to_s
                    anime.date = @work.date
                    anime.save
+                   @twitter = Tweet.new
+                   @twitter.text = @work.sub_title
+                   @twitter.save!
+                   post
                   end
 
                     @ani = ""
@@ -56,7 +60,7 @@ class BotsController < ApplicationController
                   p @b9 = ""
                   p @youtube = "" 
                   p @smove = ""
-        
+                  
         end
         redirect_to root_path
     end

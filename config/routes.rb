@@ -35,6 +35,12 @@ resources :works
   resources :animes, only: [:create, :destroy, :show]
   
   resources :contacts, only: [:new, :create]
+  
+  resources :tweets, only: [:new, :create] do
+    collection do
+      get 'post'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

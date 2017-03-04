@@ -48,6 +48,7 @@ gem 'administrate'
 gem 'bourbon'
 
 gem 'whenever', require: false
+gem 'twitter'
 
 
 # Use ActiveModel has_secure_password
