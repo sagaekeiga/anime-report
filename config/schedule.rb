@@ -5,7 +5,7 @@ set :environment, :production
 
 #2時間ごとに動かす
 every 2.hours do
-    within release_path do
+    within current_path do
       execute :rake, 'scraping:scraping'
     end
 end
