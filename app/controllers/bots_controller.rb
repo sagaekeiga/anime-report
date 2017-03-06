@@ -1,5 +1,6 @@
 class BotsController < ApplicationController
     
+    require 'open-uri'
     def index
       @q = Work.search(params[:q])
       @bots = Bot.all
@@ -74,7 +75,7 @@ class BotsController < ApplicationController
                 @new_url = element[:href]
                 @test_bot = Bot.find_by(url: @new_url)
                 
-                    if @test_bot.blank?
+                    if @test_bot.nil?
                         @work = Work.new
                         doc_work = Nokogiri.HTML(open("#{@new_url}"))
                         @work.main_title = doc_work.css('#mainBlock > div.mainEntryBlock > div.mainEntryTitle').inner_text
@@ -95,6 +96,89 @@ class BotsController < ApplicationController
     
                 end
             redirect_to bots_crawl_path
+    end
+    
+    def scrap
+        @q = Work.search(params[:q])
+        doc = Nokogiri.HTML(open("http://tvanimedouga.blog93.fc2.com/blog-entry-1028.html"))
+
+              doc.css('#mainBlock > div.mainEntryBlock > div.mainEntryBase > div.mainEntrykiji > a').each do |element|
+                @content = Content.new
+                if !element[:href].to_s.match(/.*html$/).nil?
+                    p @content.url = element[:href].to_s.match(/.*html$/)
+                    @content.title = ""
+                    @content.story = ""
+                    @content.broadcast = ""
+                    @content.youtube = ""
+                    @content.theme = ""
+                    @content.cast = ""
+                    @content.content = ""
+                    @content.save
+                end
+              end
+    end
+    
+    def insert_content
+        @q = Work.search(params[:q])
+        @contents = Content.all
+        @contents.each do |content|
+            begin
+                @content = Content.find_by(url: content.url)
+                doc = Nokogiri.HTML(open("#{content.url}"))
+                @content.title = doc.xpath('//*[@id="mainBlock"]/div[3]/div[1]/b').inner_text
+                @content.story = doc.xpath('//*[@id="mainBlock"]/div[3]/div[2]/div[1]/text()[1]').inner_text
+                @content.broadcast = ""
+                @content.youtube = ""
+                @content.theme = ""
+                @content.cast = ""
+                @content.url = content.url
+                @content.content = doc.xpath('//*[@id="mainBlock"]/div[3]/div[2]/div[2]').inner_text
+                @content.save
+            rescue
+                p "エラー回避"
+            end
+        end
+    end
+    
+    def insert_bot
+        @q = Work.search(params[:q])
+        @contents = Content.all
+        @contents.each do |content|
+            
+                begin
+                    doc = Nokogiri.HTML(open("#{content.url}"))
+                rescue
+                    p "エラー回避"
+                end
+                
+                if !doc.nil?
+                    doc.xpath('//*[@id="mainBlock"]/div[3]/div[2]/div[2]/a').each do |anchor|
+                        begin
+                            @bot = Bot.new
+                            @bot.url = anchor[:href]
+                            nokogiri = Nokogiri.HTML(open("#{@bot.url}"))
+                            p @bot.title = nokogiri.xpath('//*[@id="mainBlock"]/div[3]/div[2]/div[1]').inner_text
+                            @bot.page_id = ""
+                            @bot.date = Date.today
+                            
+                            
+                            @work = Work.new
+                            p @work.main_title = nokogiri.xpath('//*[@id="baseBlock"]/div[3]/a[2]').inner_text
+                            p @work.sub_title = nokogiri.xpath('//*[@id="mainBlock"]/div[3]/div[2]/div[1]').inner_text
+                            @work.youtube = ""
+                            @work.date = ""
+                            @work.content = ""
+                            
+                            
+                            @bot.save!
+                            @work.save!
+                        rescue
+                            p "エラー回避"
+                        end
+                    end
+                end
+
+        end
     end
     
       private

@@ -7,6 +7,9 @@ class CreateContents < ActiveRecord::Migration[5.0]
       t.text :youtube
       t.text :theme
       t.text :cast
+      t.text :url
+      t.text :content
+      
 
       t.timestamps
     end

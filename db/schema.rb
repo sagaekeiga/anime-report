@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 20170304154339) do
     t.text     "youtube",    limit: 65535
     t.text     "theme",      limit: 65535
     t.text     "cast",       limit: 65535
+    t.text     "url",        limit: 65535
+    t.text     "content",    limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end

@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     end
 
       def post
-        tweet = Tweet.order('rand()').first
+        tweet = Tweet.first
         p status = tweet.text + "が更新されました！" + "http://candii.tk/"
         twitter_client
         @client.update(status)

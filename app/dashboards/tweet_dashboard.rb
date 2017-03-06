@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class ContentDashboard < Administrate::BaseDashboard
+class TweetDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,16 +8,8 @@ class ContentDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    comments: Field::HasMany,
     id: Field::Number,
-    title: Field::Text,
-    story: Field::Text,
-    broadcast: Field::Text,
-    youtube: Field::Text,
-    theme: Field::Text,
-    cast: Field::Text,
-    url: Field::Text,
-    content: Field::Text,
+    text: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -28,25 +20,17 @@ class ContentDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :comments,
     :id,
-    :title,
-    :story,
+    :text,
+    :created_at,
+    :updated_at,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :comments,
     :id,
-    :title,
-    :story,
-    :broadcast,
-    :youtube,
-    :theme,
-    :cast,
-    :url,
-    :content,
+    :text,
     :created_at,
     :updated_at,
   ].freeze
@@ -55,21 +39,13 @@ class ContentDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :comments,
-    :title,
-    :story,
-    :broadcast,
-    :youtube,
-    :theme,
-    :cast,
-    :url,
-    :content,
+    :text,
   ].freeze
 
-  # Overwrite this method to customize how contents are displayed
+  # Overwrite this method to customize how tweets are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(content)
-  #   "Content ##{content.id}"
+  # def display_resource(tweet)
+  #   "Tweet ##{tweet.id}"
   # end
 end

@@ -16,6 +16,9 @@ resources :works
 
   get 'bots/crawl', to: 'bots#crawl'
   get 'bots/scraping', to: 'bots#scraping'
+  get 'bots/scrap', to: 'bots#scrap'
+  get 'bots/insert_content', to: 'bots#insert_content'
+  get 'bots/insert_bot', to: 'bots#insert_bot'
 
   resources :bots, only: [:show, :index]
   resources :works, only: [:create, :destroy, :show, :index, :new, :edit, :update] do

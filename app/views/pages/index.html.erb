@@ -1,6 +1,7 @@
 <div class="sub-her">
-  <div><%= link_to "キャンディィ|アニメ無料動画", root_path %></div>
-  <div class="sub-her-dis">アニメの無料動画をまとめたサイトです。</div>
+  <%= link_to image_tag('candii.jpg', { :border => '0', :size => "50x40", :alt => 'キャンディィアイコン', :class => 'tw-ic'}), root_path %>
+  <div><%= link_to "キャンディィ|アニメ無料動画", root_path %></div><br>
+  <span class="sub-her-dis">　　--アニメの無料動画をまとめたサイトです。--</span>
 </div>
 <div class="id-main-box">
   <div class="id-inline">
@@ -43,7 +44,7 @@
       <div class="id-ti">タイムライン</div>
       <div class="id-pd">
         <% @works.reverse.first(25).each do |work|%>
-          <%= work.date.strftime("%-m月 %-d日") %>
+          <%= work.date.strftime("%-m月 %-d日") if !work.date.nil? %>
           <%= link_to "#{work.sub_title.truncate(20)}", work %><br>
         <% end %>
       </div>
