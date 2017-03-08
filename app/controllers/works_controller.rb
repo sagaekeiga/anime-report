@@ -22,6 +22,9 @@ class WorksController < ApplicationController
       @work = Work.find(params[:id])
       @rank = REDIS.zincrby "works/all/#{Date.today.to_s}", 1, @work.id
       @iframe = Content.find_by(title: @work.main_title)
+      @work.rank = @rank
+      @work.save!
+      @ranks = Work.all.order("rank").reverse
   end
 
   def index

@@ -1,14 +1,30 @@
-    <iframe class="sh-if-self" width="560" height="315" src="<%= @content.youtube %>" frameborder="0" allowfullscreen></iframe>
-    <div class="sh-if">
+<div class="sub-her">
+  <%= link_to image_tag('candii.jpg', { :border => '0', :size => "50x40", :alt => 'キャンディィアイコン', :class => 'tw-ic'}), root_path %>
+  <div style="font-size:20px;"><%= link_to "#{@content.title}", @content %></div><br>
+</div>
+      <% if !@content.youtube.blank? %>
+      <iframe class="mv" width="750" height="500" src="<%= @content.youtube %>" frameborder="0" allowfullscreen></iframe>
+      <% end %>
+<%= render 'pages/left_side' %>
+  <div class="id-inline">
+    <div class="timeline">
+    <% @content = Content.find(params[:id]) %>
+
+    <div class="id-pd">
+        <% if !@content.nil? %>
             <div class="sh-tt"><%= simple_format(@content.title) %></div><br>
             <div class="sh-st"><%= simple_format(@content.story) %></div><br>
-            <div class="sh-st"><%= simple_format(@content.broadcast) %></div><br>
+            <div class="sh-st"><%= simple_format(@content.content) %></div><br>
             <div class="sh-st"><%= simple_format(@content.theme) %></div><br>
             <div class="sh-st"><%= simple_format(@content.cast) %></div><br>
-            <% @works.each do |work| %>
-             <%= link_to "#{work.sub_title}", work %><br><br>
-            <% end %>
+        <% end %>
+              <% @works.each do |work| %>
+               <% work.sub_title.slice!("#{work.main_title}") %>
+               <%= link_to "#{work.sub_title}", work, { :target => "_blank"} if work.sub_title.length < 50 %><br><br>
+              <% end %>
+
     <div class="sh-ct">コメント一覧</h2></div>
+        <% if !@content.nil? %>
     <% @content.comments.each do |comment| %>
       <div class="sh-cm">
         <strong>投稿者:</strong>
@@ -21,6 +37,8 @@
       </p>
       </div>
     <% end %>
+    <% end %>
+        <% if !@content.nil? %>
     <%= form_for([@content, @content.comments.build]) do |f| %>
       <p>
         <%= f.text_field :name, class: :"form-control", placeholder: :"名前"%>
@@ -34,8 +52,13 @@
         <%= f.submit "投稿する", class: :"btn btn-primary"%>
       </p>
     <% end %>
-    </div>
+    <% end %>
     
+    </div>
+    </div>
+    </div>
+  <%= render 'pages/right_side' %>
+  </div>
 
 
 

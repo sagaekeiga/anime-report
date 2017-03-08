@@ -6,9 +6,12 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'candii.jpg' %>
 </head>
 <body>
-<%= render 'pages/header' %>
+  <% if controller.controller_name != "contacts" %>
+    <%= render 'pages/header' %>
+  <% end %>
 
   <% if controller.controller_name == 'bots' %>
     <%= link_to "ホームへ", bots_path %>
@@ -22,6 +25,8 @@
 
 <%= yield %>
 
-
+  <% if controller.controller_name != "contacts" %>
+  <%= render 'pages/footer' %>
+  <% end %>
 </body>
 </html>

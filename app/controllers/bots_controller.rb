@@ -1,5 +1,7 @@
 class BotsController < ApplicationController
-    
+
+  http_basic_authenticate_with name: "anime", password: "s19930528"
+
     require 'open-uri'
     def index
       @q = Work.search(params[:q])
@@ -83,6 +85,7 @@ class BotsController < ApplicationController
                         @work.date = Date.today
                         @work.content = ""
                         @work.youtube = ""
+                        @work.rank = 0
                         @work.save!
                         
                         @bot = Bot.new
@@ -123,17 +126,21 @@ class BotsController < ApplicationController
         @contents = Content.all
         @contents.each do |content|
             begin
-                @content = Content.find_by(url: content.url)
-                doc = Nokogiri.HTML(open("#{content.url}"))
-                @content.title = doc.xpath('//*[@id="mainBlock"]/div[3]/div[1]/b').inner_text
-                @content.story = doc.xpath('//*[@id="mainBlock"]/div[3]/div[2]/div[1]/text()[1]').inner_text
-                @content.broadcast = ""
-                @content.youtube = ""
-                @content.theme = ""
-                @content.cast = ""
-                @content.url = content.url
-                @content.content = doc.xpath('//*[@id="mainBlock"]/div[3]/div[2]/div[2]').inner_text
-                @content.save
+                p @content = Content.find_by(url: content.url)
+                p "失敗"
+                if @content.title.blank?
+                    doc = Nokogiri.HTML(open("#{content.url}"))
+                    @content.title = doc.xpath('//*[@id="baseBlock"]/div[3]/a[2]').inner_text
+                    @content.story = doc.xpath('//*[@id="mainBlock"]/div[3]/div[2]/div[1]').inner_text
+                    @content.broadcast = ""
+                    @content.youtube = ""
+                    @content.theme = ""
+                    @content.cast = ""
+                    @content.url = content.url
+                    @content.content = doc.xpath('//*[@id="mainBlock"]/div[3]/div[2]/div[2]').inner_text
+                    @content.save
+                    p "成功"
+                end
             rescue
                 p "エラー回避"
             end
@@ -153,28 +160,46 @@ class BotsController < ApplicationController
                 
                 if !doc.nil?
                     doc.xpath('//*[@id="mainBlock"]/div[3]/div[2]/div[2]/a').each do |anchor|
+                        
                         begin
-                            @bot = Bot.new
-                            @bot.url = anchor[:href]
-                            nokogiri = Nokogiri.HTML(open("#{@bot.url}"))
-                            p @bot.title = nokogiri.xpath('//*[@id="mainBlock"]/div[3]/div[2]/div[1]').inner_text
-                            @bot.page_id = ""
-                            @bot.date = Date.today
-                            
-                            
-                            @work = Work.new
-                            p @work.main_title = nokogiri.xpath('//*[@id="baseBlock"]/div[3]/a[2]').inner_text
-                            p @work.sub_title = nokogiri.xpath('//*[@id="mainBlock"]/div[3]/div[2]/div[1]').inner_text
-                            @work.youtube = ""
-                            @work.date = ""
-                            @work.content = ""
-                            
-                            
-                            @bot.save!
-                            @work.save!
+                            p @test = anchor[:href].match(/.*html$/).to_s
                         rescue
-                            p "エラー回避"
+                            p "test失敗"
                         end
+                        
+                            p @bot = Bot.find_by(url: @test)
+                            if @bot.blank?
+                                @bot = Bot.new
+                                begin
+                                    p @bot.url = anchor[:href].to_s.match(/.*html$/)
+                                    p nokogiri = Nokogiri.HTML(open("#{@bot.url}"))
+                                    p @bot.title = nokogiri.xpath('//*[@id="mainBlock"]/div[3]/div[2]/div[1]').inner_text
+                                rescue
+                                    p "@bot.title失敗"
+                                end
+                                if !@bot.title.blank?
+                                    begin
+                                        @bot.page_id = ""
+                                        @bot.date = Date.today
+        
+                                    
+                                        @work = Work.new
+                                        p @work.main_title = nokogiri.xpath('//*[@id="baseBlock"]/div[3]/a[2]').inner_text
+                                        p @work.sub_title = nokogiri.xpath('//*[@id="mainBlock"]/div[3]/div[2]/div[1]').inner_text
+                                        @work.youtube = ""
+                                        @work.date = Date.today
+                                        @work.content = ""
+                                        @work.rank = 0
+                                        
+                                        
+                                        @bot.save!
+                                        @work.save!
+                                    rescue
+                                        p "Errno::ENOENT (No such file or directory @ rb_sysopen - ):"
+                                    end
+                                end
+                            end
+
                     end
                 end
 

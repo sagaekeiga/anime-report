@@ -10,7 +10,8 @@ class ContentsController < ApplicationController
   def show
       @q = Work.search(params[:q])
       @content = Content.find(params[:id])
-      @works = Work.where(main_title: @content.title).order("date")
+      @works = Work.where(main_title: @content.title).order("created_at")
+      @ranks = Work.all.order("rank").reverse
   end
 
   def new
@@ -23,6 +24,8 @@ class ContentsController < ApplicationController
   def index
       @contents = Content.all.order("title")
       @q = Work.search(params[:q])
+      ids = REDIS.zrevrangebyscore "works/daily/#{Date.yesterday.to_s}", "+inf", 0, limit: [0, 40]
+      @ranks = Work.all.order("rank").reverse
   end
   
   def update

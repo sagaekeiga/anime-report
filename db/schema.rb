@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20170304154339) do
     t.text     "content",    limit: 65535
     t.text     "youtube",    limit: 65535
     t.date     "date"
+    t.integer  "rank"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end

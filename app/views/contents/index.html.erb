@@ -1,4 +1,13 @@
-<div class="ind-cont">
+<div class="sub-her">
+  <%= link_to image_tag('candii.jpg', { :border => '0', :size => "50x40", :alt => 'キャンディィアイコン', :class => 'tw-ic'}), root_path %>
+  <div style="font-size:20px;"><%= link_to "アニメ動画一覧", contents_path %></div><br>
+</div>
+
+<%= render 'pages/left_side' %>
+
+  <div class="id-inline">
+    <div class="timeline">
+     <div class="id-pd">
 
 【ア行】<br>
 -ア<br>
@@ -372,3 +381,6 @@
 <% end %>
 
 </div>
+</div>
+</div>
+  <%= render 'pages/right_side' %>

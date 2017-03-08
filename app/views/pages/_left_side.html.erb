@@ -1,0 +1,40 @@
+<div class="id-main-box">
+  <div class="id-inline">
+    <div class="we-index">
+    <div class="id-tw">
+      アニメ速報はこちらで!!
+      <div class="id-tw-ic">
+        <%= link_to image_tag('twitter.png', { :border => '0', :size => "70x70", :alt => 'キャンディィアイコン', :class => 'tw-ic'}), 'https://twitter.com/candii_anime', { :target => "_blank"}%>
+      </div>
+    </div>
+    <div class="id-ti">
+      <%= search_form_for @q do |f| %>
+        <%= f.search_field :main_title_cont, :placeholder => "作品名", class: :"form-control input-sm" %>
+        <%= f.submit :class => "form-control input-sm"%>
+      <% end %>
+    </div><br><br><br>
+    
+    <div class="id-pd">
+      <div style="text-align: center; height: 70px;"><%= button_to "動画一覧", contents_path, { :class => "btn btn-info btn-lg" }%></div>
+    </div>
+    
+    <div class="id-ti">放映中アニメ</div>
+    <div class="id-pd">
+      <% doc = Nokogiri.HTML(open("http://tvanimedouga.blog93.fc2.com/")) %>
+      <% doc.css('#menu1Block > div:nth-child(4) > div.menu1BlockBody > div > div > ul > li > a').each do |element| %>
+      
+        <% ani = element.inner_html %>
+        
+        <% @content = Content.find_by(title: ani) %>
+
+          <% if !@content.blank? %>
+          <% if ani == @content.title %>
+            <%= link_to "#{ani}",  @content %><br>
+          <% end %>
+          <% end %>
+        
+      <% end %>
+    </div>
+
+    </div>
+  </div>

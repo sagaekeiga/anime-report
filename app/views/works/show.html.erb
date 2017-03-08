@@ -1,54 +1,65 @@
-
-    <% if !@iframe.blank? %>
-      <iframe class="sh-if-self" width="560" height="315" src="<%= @iframe.youtube %>" frameborder="0" allowfullscreen></iframe>
-    <% end %>
+<div class="sub-her">
+  <%= link_to image_tag('candii.jpg', { :border => '0', :size => "50x40", :alt => 'キャンディィアイコン', :class => 'tw-ic'}), root_path %>
+  <div style="font-size:20px;"><%= link_to "#{@work.sub_title}", @work %></div><br>
+</div>
+      <% if !@iframe.blank? %>
+      <iframe class="mv" width="750" height="500" src="<%= @iframe.youtube %>" frameborder="0" allowfullscreen></iframe>
+      <% end %>
+<%= render 'pages/left_side' %>
+  <div class="id-inline">
+    <div class="timeline">
     
-    <div class="sh-if">
-            <div class="sh-ani-tt"><%= simple_format(@work.sub_title) %><%= @rank.to_i %></div>
-            <div class="sh-ani-co"><%= @work.content %></div>
-            <% @anime = Anime.find_by(title: @work.sub_title) %>
-
-            <% @anime = Anime.find_by(date: @work.date, title: @work.sub_title) %>
-            <% if !@anime.blank? %>
-              <%= link_to "【Youtube】", @anime.youtube , { :target => "_blank"} if !@anime.youtube.blank? %>
-              <%= link_to "【FC2】", @anime.fc2 , { :target => "_blank"} if !@anime.fc2.blank? %>
-              <%= link_to "【Anitube】", @anime.ani , { :target => "_blank"}if !@anime.ani.blank? %>
-              <%= link_to "【Himawari】", @anime.hima, { :target => "_blank"} if !@anime.hima.blank? %>
-              <%= link_to "【GoGo】", @anime.gogo , { :target => "_blank"}if !@anime.gogo.blank? %>
-              <%= link_to "【Nova】", @anime.nova, { :target => "_blank"} if !@anime.nova.blank? %>
-              <%= link_to "【GoodA】", @anime.gooda , { :target => "_blank"}if !@anime.gooda.blank? %>
-              <%= link_to "【Kiss】", @anime.kiss, { :target => "_blank"} if !@anime.kiss.blank? %>
-              <%= link_to "【myvi】", @anime.myvi, { :target => "_blank"} if !@anime.myvi.blank? %>
-              <%= link_to "【B9】", @anime.b9, { :target => "_blank"} if !@anime.b9.blank? %>
-              <%= link_to "【Dailymotion】", @anime.daily, { :target => "_blank"} if !@anime.daily.blank? %>
-              <%= link_to "【Miomio】", @anime.miomio, { :target => "_blank"} if !@anime.miomio.blank? %>
-              <%= link_to "【Saymove】", @anime.smove, { :target => "_blank"} if !@anime.smove.blank? %>
-            <% end %>
-              
-    <div class="sh-ct">コメント一覧</h2></div>
-    <% @work.comments.each do |comment| %>
+    <div class="id-ti">PV<%= @rank.to_i %></div>
+    
+    <div class="id-pd">
+      <%= @work.content %>
+      <% @anime = Anime.find_by(title: @work.sub_title) %>
+      
+      <% @anime = Anime.find_by(date: @work.date, title: @work.sub_title) %>
+      <% if !@anime.blank? %>
+      <%= link_to "【Youtube】", @anime.youtube , { :target => "_blank"} if !@anime.youtube.blank? %>
+      <%= link_to "【FC2】", @anime.fc2 , { :target => "_blank"} if !@anime.fc2.blank? %>
+      <%= link_to "【Anitube】", @anime.ani , { :target => "_blank"}if !@anime.ani.blank? %>
+      <%= link_to "【Himawari】", @anime.hima, { :target => "_blank"} if !@anime.hima.blank? %>
+      <%= link_to "【GoGo】", @anime.gogo , { :target => "_blank"}if !@anime.gogo.blank? %>
+      <%= link_to "【Nova】", @anime.nova, { :target => "_blank"} if !@anime.nova.blank? %>
+      <%= link_to "【GoodA】", @anime.gooda , { :target => "_blank"}if !@anime.gooda.blank? %>
+      <%= link_to "【Kiss】", @anime.kiss, { :target => "_blank"} if !@anime.kiss.blank? %>
+      <%= link_to "【myvi】", @anime.myvi, { :target => "_blank"} if !@anime.myvi.blank? %>
+      <%= link_to "【B9】", @anime.b9, { :target => "_blank"} if !@anime.b9.blank? %>
+      <%= link_to "【Dailymotion】", @anime.daily, { :target => "_blank"} if !@anime.daily.blank? %>
+      <%= link_to "【Miomio】", @anime.miomio, { :target => "_blank"} if !@anime.miomio.blank? %>
+      <%= link_to "【Saymove】", @anime.smove, { :target => "_blank"} if !@anime.smove.blank? %>
+      <% end %>
+      
+      <div class="sh-ct">コメント一覧</h2></div>
+      <% @work.comments.each do |comment| %>
       <div class="sh-cm">
-        <strong>投稿者:</strong>
-        <%= comment.name %>
+      <strong>投稿者:</strong>
+      <%= comment.name %>
       </p>
-    
+      
       <p>
-        <strong>内容:</strong>
-        <%= comment.body %>
+      <strong>内容:</strong>
+      <%= comment.body %>
       </p>
       </div>
-    <% end %>
-    <%= form_for([@work, @work.comments.build]) do |f| %>
+      <% end %>
+      <%= form_for([@work, @work.comments.build]) do |f| %>
       <p>
-        <%= f.text_field :name, class: :"form-control", placeholder: :"名前"%>
+      <%= f.text_field :name, class: :"form-control", placeholder: :"名前"%>
       </p>
+     <p>
+      <%= f.text_area :body, class: :"form-control", placeholder: :"内容"%>
+      </p>
+      
+      
       <p>
-        <%= f.text_area :body, class: :"form-control", placeholder: :"内容"%>
+      <%= f.submit "投稿する", class: :"btn btn-primary"%>
       </p>
-     
-    
-      <p>
-        <%= f.submit "投稿する", class: :"btn btn-primary"%>
-      </p>
-    <% end %>
+      <% end %> 
     </div>
+    </div>
+    </div>
+  <%= render 'pages/right_side' %>
+  </div>

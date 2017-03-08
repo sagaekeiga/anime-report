@@ -15,6 +15,7 @@ class WorkDashboard < Administrate::BaseDashboard
     content: Field::Text,
     youtube: Field::Text,
     date: Field::DateTime,
+    rank: Field::Integer,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -41,6 +42,7 @@ class WorkDashboard < Administrate::BaseDashboard
     :content,
     :youtube,
     :date,
+    :rank,
     :created_at,
     :updated_at,
   ].freeze
@@ -55,6 +57,7 @@ class WorkDashboard < Administrate::BaseDashboard
     :content,
     :youtube,
     :date,
+    :rank,
   ].freeze
 
   # Overwrite this method to customize how works are displayed

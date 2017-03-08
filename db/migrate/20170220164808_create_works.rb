@@ -6,6 +6,7 @@ class CreateWorks < ActiveRecord::Migration[5.0]
       t.text :content
       t.text :youtube
       t.date :date
+      t.integer :rank
 
       t.timestamps
     end

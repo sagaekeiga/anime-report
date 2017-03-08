@@ -30,7 +30,7 @@
   min-height: 10px;
   height: auto !important;
   height: 50px;
-  text-align: center;
+  text-align: left;
   word-break: break-word;
   padding: 10px;
   border:1px solid rgb(238, 238, 238);
@@ -39,6 +39,11 @@
   -moz-box-shadow:rgba(238, 238, 238, 0.509804) 9px 9px 10px -4px;
 }
 
+//コンテンツタイトル一覧
+.sh-tt-tt {
+ width: 80%;
+ margin: 0 auto;
+}
 .sh-if-self {
   position: absolute;
   left: 0;
@@ -65,6 +70,7 @@
 .sh-tt {
 	padding-bottom: .5em;
 	border-bottom: 1px solid #ccc;
+	text-align: center;
 }
 
 .sh-st {
@@ -129,4 +135,13 @@
 
 .op {
  padding: 10px 10px 10px 10px;
+}
+
+//動画
+.mv {
+ margin: 0 auto;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  margin-bottom: 50px;
 }
