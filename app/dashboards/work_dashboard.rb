@@ -15,7 +15,7 @@ class WorkDashboard < Administrate::BaseDashboard
     content: Field::Text,
     youtube: Field::Text,
     date: Field::DateTime,
-    rank: Field::Integer,
+    rank: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
