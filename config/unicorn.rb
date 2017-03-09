@@ -1,6 +1,5 @@
 worker_processes 2
 working_directory "/home/anime/deploy/current"
-timeout 3600
 
 listen "/var/run/unicorn/unicorn.sock"
 pid "/var/run/unicorn/unicorn.pid"
