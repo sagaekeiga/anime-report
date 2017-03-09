@@ -3,7 +3,7 @@
       <div class="id-ti">ランキング</div>
         <div class="id-pd">
           <% @i = 0%>
-          <% @ranks.each do |rank| %>
+          <% @ranks.first(25).each do |rank| %>
            <%= rank.rank %>
            <%= link_to "#{rank.sub_title.truncate(17)}", rank %><br>
           <% end %>
