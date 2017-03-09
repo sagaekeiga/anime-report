@@ -124,7 +124,7 @@ class BotsController < ApplicationController
     def insert_content
         @q = Work.search(params[:q])
         @contents = Content.all
-        @contents[88..3149].each do |content|
+        @contents.each do |content|
             begin
                 p @content = Content.find_by(url: content.url)
                 p "失敗"
@@ -150,7 +150,7 @@ class BotsController < ApplicationController
     def insert_bot
         @q = Work.search(params[:q])
         @contents = Content.all
-        @contents.each do |content|
+        @contents[342..3149].each do |content|
             
                 begin
                     doc = Nokogiri.HTML(open("#{content.url}"))
