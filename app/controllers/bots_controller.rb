@@ -124,7 +124,7 @@ class BotsController < ApplicationController
     def insert_content
         @q = Work.search(params[:q])
         @contents = Content.all
-        @contents.each do |content|
+        @contents[88..3149].each do |content|
             begin
                 p @content = Content.find_by(url: content.url)
                 p "失敗"
