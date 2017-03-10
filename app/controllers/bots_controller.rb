@@ -56,7 +56,6 @@ class BotsController < ApplicationController
                    @twitter = Tweet.new
                    @twitter.text = @work.sub_title if !@work.nil?
                    @twitter.save!
-                   post
                   end
 
                     @ani = ""
