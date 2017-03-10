@@ -18,6 +18,7 @@ class BotsController < ApplicationController
         @bots = Bot.all
 
         @bots.each do |bot|
+        begin
         doc = Nokogiri.HTML(open("#{bot.url}"))
             @title = doc.css('div.mainEntryBody')
               doc.css('a').each do |element|
@@ -29,7 +30,9 @@ class BotsController < ApplicationController
                   p @youtube = element[:href].to_s.match(%r{https://www.youtube.com/watch.*$}) if !element[:href].to_s.match(%r{https://www.youtube.com/watch.*$}).nil?
                   p @smove = element[:href].to_s.match(%r{http://say-move.org/comeplay.*$}) if !element[:href].to_s.match(%r{http://say-move.org/comeplay.*$}).nil?
               end
-              
+        rescue
+         p "bot.urlエラー"
+        end
                   @anime = Anime.find_by(title: @title.inner_text)
                   @work = Work.find_by(sub_title: bot.title)
                   if @anime.nil?
