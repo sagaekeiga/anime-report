@@ -34,8 +34,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "nokogiri"
 
 
-gem 'momentjs-rails'
-gem 'bootstrap3-datetimepicker-rails'
 
 gem 'redis'
 gem 'sqlite3'

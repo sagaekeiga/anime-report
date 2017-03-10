@@ -51,7 +51,7 @@ class BotsController < ApplicationController
                    anime.daily = @daily.to_s
                    anime.miomio = @miomio.to_s
                    anime.smove = @smove.to_s
-                   anime.date = @work.date
+                   anime.date = @work.date if !@work.nil?
                    anime.save
                    @twitter = Tweet.new
                    @twitter.text = @work.sub_title
