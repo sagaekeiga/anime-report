@@ -54,7 +54,7 @@ class BotsController < ApplicationController
                    anime.date = @work.date if !@work.nil?
                    anime.save
                    @twitter = Tweet.new
-                   @twitter.text = @work.sub_title
+                   @twitter.text = @work.sub_title if !@work.nil?
                    @twitter.save!
                    post
                   end
