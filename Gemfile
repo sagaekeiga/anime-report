@@ -41,6 +41,8 @@ gem 'sqlite3'
 gem "ransack"
 gem "mysql2"
 
+gem 'bootstrap-datetimepicker-rails'
+
 
 gem 'administrate'
 gem 'bourbon'
